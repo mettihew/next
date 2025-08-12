@@ -35,11 +35,9 @@ export default function ClientPage() {
     fetch(`/api/products?page=${page}&limit=${limit}`)
       .then(res => res.json())
       .then(res => {
-        console.log("shi");
-        
-        // setData(res);
-        // setLoading(false);
-        // window.scrollTo({ top: 0, behavior: 'smooth' });
+        setData(res);
+        setLoading(false);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       })
       .catch(() => {
         setData({ products: [], totalPages: 1 });

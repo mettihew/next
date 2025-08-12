@@ -64,16 +64,17 @@ export default function HeaderClient({ user }: HeaderClientProps) {
   };
 
   return (
-    <header className="shadow-sm top-0 z-10 bg-gray-400">
+    <header className="shadow-sm top-0 z-10 bg-pink-400">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Link
               href="/"
-              className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[22px] font-bold text-gray-900"
+              // className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[22px] font-bold text-gray-900"
+              className="text-[46px] font-bold text-gray-900"
             >
-              Eesy
+              Eesy 2
             </Link>
           </div>
 
