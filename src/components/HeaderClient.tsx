@@ -64,17 +64,16 @@ export default function HeaderClient({ user }: HeaderClientProps) {
   };
 
   return (
-    <header className="shadow-sm top-0 z-10 bg-pink-400">
+    <header className="shadow-sm top-0 z-10 bg-white-400">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
+        <div className="flex justify-between h-12 items-center">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Link
               href="/"
-              // className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[22px] font-bold text-gray-900"
-              className="text-[46px] font-bold text-gray-900"
+              className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[22px] font-bold text-gray-900"
             >
-              Eesy 2
+              Eesy3
             </Link>
           </div>
 
@@ -90,7 +89,7 @@ export default function HeaderClient({ user }: HeaderClientProps) {
               />
               <Search
                 onClick={handleSearch}
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 cursor-pointer"
               />
               <select className="bg-blue-500 text-red absolute right-3 top-1/2 -translate-y-1/2 bg-transparent border-none">
                 <option></option>
@@ -157,7 +156,7 @@ export default function HeaderClient({ user }: HeaderClientProps) {
 
         {/* Mobile menu */}
         {isOpen && (
-          <div className="md:hidden p-4 flex gap-4 border-t text-gray-700">
+          <div className="md:hidden p-2 flex gap-4 border-t text-gray-700">
             {['/products', '/about', '/login', '/cart', '/test'].map((path) => (
               <Link
                 key={path}

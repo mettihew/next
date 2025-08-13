@@ -63,7 +63,7 @@ export default function FeaturedProducts() {
 
   return (
     <>
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mt-5">
         <h2 className="text-[18px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] font-bold">Featured Products</h2>
         <RouterSpinnerLink href="/products">
           <Button variant="default">Explore All</Button>

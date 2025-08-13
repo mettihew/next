@@ -7,7 +7,6 @@ if (!MONGODB_URI) {
   throw new Error('Please define the MONGODB_URI environment variable');
 }
 
-
 const uri: string = MONGODB_URI;
 
 interface GlobalMongoose {
