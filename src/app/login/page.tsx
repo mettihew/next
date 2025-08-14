@@ -1,39 +1,92 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import { Loader2 } from "lucide-react"; // spinner icon
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
+    setError("");
+    setLoading(true);
 
-const res = await fetch("/api/auth/login", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ email: email.trim(), password: password.trim() }),
-  credentials: "include", // << add this so cookies work
-});
-    const data = await res.json();
+    try {
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim(), password: password.trim() }),
+        credentials: "include",
+      });
+      const data = await res.json();
 
-    if (!res.ok) {
-      setError(data.error || "Something went wrong");
-    } else {
-      // localStorage.setItem("token", data.token); // 💾 Save JWT
-      alert("Logged in as " + data.userId);
-      // Redirect if needed, or just chill 😎
+      if (!res.ok) {
+        setError(data.error || "Something went wrong 😢");
+      } else {
+        // Optional: redirect or do something with data
+         window.location.href = "/dashboard";
+      }
+    } catch (err) {
+     setError(err instanceof Error ? err.message : String(err));
+    } finally {
+      setLoading(false);
     }
   }
 
   return (
-    <form onSubmit={handleLogin} className="p-4 max-w-sm mx-auto mt-10 space-y-4">
-      <input value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" className="w-full p-2 border" />
-      <input value={password} onChange={e => setPassword(e.target.value)} type="password" placeholder="Password" className="w-full p-2 border" />
-      {error && <p className="text-red-500">{error}</p>}
-      <button className="border border-1px-green bg-black text-white px-4 py-2 rounded">Login</button>
-      <Link className="text-[10px]" href={'/register'}>Register</Link>
-    </form>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+      <form
+        onSubmit={handleLogin}
+        className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md space-y-6"
+      >
+        <h2 className="text-2xl font-bold text-gray-900 text-center">Sign in to Eesy4</h2>
+        <p className="text-sm text-gray-500 text-center">Your eBay-style login 🛒</p>
+
+        <div className="flex flex-col space-y-2">
+          <label className="text-sm font-medium text-gray-700">Email</label>
+          <input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            type="email"
+            placeholder="you@example.com"
+            className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          />
+        </div>
+
+        <div className="flex flex-col space-y-2">
+          <label className="text-sm font-medium text-gray-700">Password</label>
+          <input
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+            placeholder="••••••••"
+            className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          />
+        </div>
+
+        {error && <p className="text-red-500 text-sm">{error}</p>}
+
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full flex justify-center items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded transition disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {loading && <Loader2 className="animate-spin w-5 h-5" />}
+          {loading ? "Logging in..." : "Login"}
+        </button>
+
+        <p className="text-sm text-gray-600 text-center">
+          Dont have an account?{" "}
+          <Link href="/register" className="text-blue-600 hover:underline">
+            Register
+          </Link>
+        </p>
+      </form>
+    </div>
   );
 }

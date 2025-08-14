@@ -2,6 +2,7 @@ import dbConnect from '@/lib/dbConnect';
 import Product from '@/models/Product';
 import Image from 'next/image';
 import Link from 'next/link';
+import FilterClient from '@/components/SearchFilterClient';
 
 interface ProductType {
   _id: string;
@@ -14,11 +15,6 @@ interface ProductType {
   }[];
   slug: string;
 }
-
-
-
-
-
 
 
 export default async function SearchPage({
@@ -60,9 +56,29 @@ export default async function SearchPage({
 
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-4 gap-6">
+    <div className="max-w-7xl mx-auto px-2 grid grid-cols-1 py-3 md:grid-cols-4 gap-2">
+
+
+        {/* <aside className="hidden md:block"> */}
+        <FilterClient
+          query={query}
+          brandList={brandList}
+          uniqueBrands={uniqueBrands}
+          min={min}
+          max={max}
+        />
+      {/* </aside> */}
+
+{/* 
+      <FilterClient
+  query={query}
+  brandList={brandList}
+  uniqueBrands={uniqueBrands}
+  min={min}
+  max={max}
+/> */}
       {/* Filters */}
-      <aside className="space-y-6">
+      {/* <aside className="space-y-6">
         <form className="space-y-4" method="GET">
           <input
             name="q"
@@ -100,7 +116,7 @@ export default async function SearchPage({
             Apply Filters
           </button>
         </form>
-      </aside>
+      </aside> */}
 
       {/* Results */}
       <main className="md:col-span-3 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-1">
@@ -129,3 +145,4 @@ export default async function SearchPage({
     </div>
   );
 }
+

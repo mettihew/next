@@ -1,9 +1,11 @@
 // next.config.js
 module.exports = {
   images: {
-    domains: ['m.media-amazon.com'],
-    // Optional: Adjust image optimization settings
-    // formats: ['image/webp'],
-    // minimumCacheTTL: 60,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'm.media-amazon.com',
+      },
+    ],
   },
 };
