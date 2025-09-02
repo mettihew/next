@@ -1,46 +1,15 @@
-// import { NextResponse } from "next/server";
-// import connectDB from "@/lib/dbConnect";
-// import User from "@/models/User";
-
-// export async function DELETE() {
-//   try {
-//     await connectDB();
-//     await User.deleteMany({});
-//     return NextResponse.json({ message: "All users deleted" });
-//   } catch (err) {
-//     return NextResponse.json({ error: err }, { status: 500 });
-//   }
-// }
-
-// curl -X DELETE http://localhost:3000/api/test
-
-// import { NextResponse } from 'next/server';
-
-// export async function GET() {
-//   return NextResponse.json({ message: 'Test route working 🎉' });
-// }
-
-
-import { NextResponse } from "next/server";
-import connectDB from "@/lib/dbConnect";
-import Product from "@/models/Product";
-
-export async function GET() {
-  try {
-    await connectDB();
-    await Product.insertMany([
+[
   {
-    "name": "PLOKNRD Women's T-Shirt Pleated Collar Short Summer Blouse Chic Tops Elegant Fashion Blouses",
-    "slug": "PLOKNRD-Womens-T-Shirt-Pleated-Collar",
-    "category": "clothes",
-    "subCategory": "women",
+    "name": "PLOKNRD Women's T-Shirt Pleated Collar Short Summer Blouse Chic Tops Elegant Fashion Blouses ",
+    "category: "clothes",
+    "subCategory: "women",
     "price": 129.99,
     "discount": 15,
     "stock": 250,
     "sold": 1840,
     "rating": 4.6,
-    "banner": "https://i.pinimg.com/736x/a0/04/7c/a0047c6fbe7355ce655176da3b4cba5e.jpg",
     "reviews": 1250,
+    "banner": "https://m.media-amazon.com/images/S/aplus-media-library-service-media/f6f098fa-cd46-425b-ae21-1a52b89abce0.__CR0,0,970,300_PT0_SX970_V1___.jpg",
     "brand": "Anker",
     "description": "Active Noise Cancelling Wireless Earbuds, 9Hrs Playtime, 6 Mics for Calls, HearID Custom EQ, Wireless Charging, Bluetooth 5.0, for Home Office.",
     "features": [
@@ -61,23 +30,22 @@ export async function GET() {
       "https://m.media-amazon.com/images/I/81brJm5XBNL._AC_SX569_.jpg",
       "https://m.media-amazon.com/images/I/91SS-CK6ttL._AC_SY741_.jpg",
       "https://m.media-amazon.com/images/I/81Vf8HziR-L._AC_SY741_.jpg",
-      "https://m.media-amazon.com/images/I/719dlr3PsJL._AC_SY741_.jpg"
+      "https://m.media-amazon.com/images/I/719dlr3PsJL._AC_SY741_.jpg",
     ],
     "createdAt": "2023-01-15T08:00:00Z",
     "updatedAt": "2023-05-20T10:30:00Z"
   },
   {
-    "name": "MOLERANI Women's Short Sleeve V Neck Striped Summer Tops Casual Loose T-Shirt S-2XL",
-    "slug": "MOLERANI-Womens-Short-Sleeve",
-    "category": "clothes",
-    "subCategory": "women",
+    "name": "MOLERANI Women's Short Sleeve V Neck Striped Summer Tops Casual Loose T-Shirt S-2XL ",
+    "category: "clothes",
+    "subCategory: "women",
     "price": 199.95,
     "discount": 20,
     "stock": 180,
     "sold": 3245,
     "rating": 4.4,
-    "banner": "https://i.pinimg.com/736x/a0/04/7c/a0047c6fbe7355ce655176da3b4cba5e.jpg",
     "reviews": 2870,
+    "banner": "https://m.media-amazon.com/images/S/aplus-media-library-service-media/f6f098fa-cd46-425b-ae21-1a52b89abce0.__CR0,0,970,300_PT0_SX970_V1___.jpg",
     "brand": "Fitbit",
     "description": "Built-in GPS, 24/7 heart rate, Alexa built-in, sleep tracking, 6+ days battery life, blood oxygen tracking.",
     "features": [
@@ -98,23 +66,22 @@ export async function GET() {
       "https://m.media-amazon.com/images/I/71uPKEGth1L._AC_SY741_.jpg",
       "https://m.media-amazon.com/images/I/91SS-CK6ttL._AC_SY741_.jpg",
       "https://m.media-amazon.com/images/I/81Vf8HziR-L._AC_SY741_.jpg",
-      "https://m.media-amazon.com/images/I/719dlr3PsJL._AC_SY741_.jpg"
+      "https://m.media-amazon.com/images/I/719dlr3PsJL._AC_SY741_.jpg",
     ],
     "createdAt": "2022-11-10T08:00:00Z",
     "updatedAt": "2023-04-15T09:15:00Z"
   },
   {
-    "name": "heekpek Women's T-Shirt Summer Chic Blouse Round Neck Tops Short Sleeve T Shirt Large Size Cotton T Shirt Printed",
-    "slug": "heekpek-Womens-T-Shirt-Summer",
-    "category": "clothes",
-    "subCategory": "women",
+    "name": "heekpek Women's T-Shirt Summer Chic Blouse Round Neck Tops Short Sleeve T Shirt Large Size Cotton T Shirt Printed ",
+    "category: "clothes",
+    "subCategory: "women",
     "price": 99.99,
     "discount": 25,
     "stock": 95,
     "sold": 8760,
     "rating": 4.8,
-    "banner": "https://i.pinimg.com/736x/a0/04/7c/a0047c6fbe7355ce655176da3b4cba5e.jpg",
     "reviews": 12500,
+    "banner": "https://m.media-amazon.com/images/S/aplus-media-library-service-media/f6f098fa-cd46-425b-ae21-1a52b89abce0.__CR0,0,970,300_PT0_SX970_V1___.jpg",
     "brand": "Ninja",
     "description": "4 Quart Capacity, Uses up to 75% Less Fat Than Traditional Frying Methods, Air Fry, Roast, Reheat & Dehydrate.",
     "features": [
@@ -135,23 +102,22 @@ export async function GET() {
       "https://m.media-amazon.com/images/I/71Sh8iNMhzL._AC_SX569_.jpg",
       "https://m.media-amazon.com/images/I/91SS-CK6ttL._AC_SY741_.jpg",
       "https://m.media-amazon.com/images/I/81Vf8HziR-L._AC_SY741_.jpg",
-      "https://m.media-amazon.com/images/I/719dlr3PsJL._AC_SY741_.jpg"
+      "https://m.media-amazon.com/images/I/719dlr3PsJL._AC_SY741_.jpg",
     ],
     "createdAt": "2021-08-22T08:00:00Z",
     "updatedAt": "2023-03-18T14:20:00Z"
   },
   {
     "name": "Urban Classics Ladies Organic Extended Shoulder Tee Women's T-Shirt",
-    "slug": "Urban-Classics-Ladies-Organic",
-    "category": "clothes",
-    "subCategory": "women",
+    "category: "clothes",
+    "subCategory: "women",
     "price": 129.99,
     "discount": 0,
     "stock": 320,
     "sold": 15430,
     "rating": 4.7,
-    "banner": "https://i.pinimg.com/736x/a0/04/7c/a0047c6fbe7355ce655176da3b4cba5e.jpg",
     "reviews": 24350,
+    "banner": "https://m.media-amazon.com/images/S/aplus-media-library-service-media/f6f098fa-cd46-425b-ae21-1a52b89abce0.__CR0,0,970,300_PT0_SX970_V1___.jpg",
     "brand": "Keurig",
     "description": "Single Serve K-Cup Pod Coffee Brewer, 6 to 10 oz. Brew Sizes, Black",
     "features": [
@@ -172,23 +138,22 @@ export async function GET() {
       "https://m.media-amazon.com/images/I/61ZbCXhswrL._AC_SY741_.jpg",
       "https://m.media-amazon.com/images/I/91SS-CK6ttL._AC_SY741_.jpg",
       "https://m.media-amazon.com/images/I/81Vf8HziR-L._AC_SY741_.jpg",
-      "https://m.media-amazon.com/images/I/719dlr3PsJL._AC_SY741_.jpg"
+      "https://m.media-amazon.com/images/I/719dlr3PsJL._AC_SY741_.jpg",
     ],
     "createdAt": "2020-05-10T08:00:00Z",
     "updatedAt": "2023-02-28T11:45:00Z"
   },
   {
-    "name": "Hanes Women's Shirt",
-    "slug": "Hanes-Womens-Shirt",
-    "category": "clothes",
-    "subCategory": "women",
+    "name": "Hanes Women's Shirt ",
+    "category: "clothes",
+    "subCategory: "women",
     "price": 12.59,
     "discount": 30,
     "stock": 480,
     "sold": 87650,
     "rating": 4.7,
-    "banner": "https://i.pinimg.com/736x/a0/04/7c/a0047c6fbe7355ce655176da3b4cba5e.jpg",
     "reviews": 87650,
+    "banner": "https://m.media-amazon.com/images/S/aplus-media-library-service-media/f6f098fa-cd46-425b-ae21-1a52b89abce0.__CR0,0,970,300_PT0_SX970_V1___.jpg",
     "brand": "Atria Books",
     "author": "Colleen Hoover",
     "description": "In this \"brave and heartbreaking novel that digs its claws into you and doesn't let go, long after you've finished it\" (Anna Todd, New York Times bestselling author) from the #1 New York Times bestselling author of All Your Perfects.",
@@ -210,23 +175,22 @@ export async function GET() {
       "https://m.media-amazon.com/images/I/715kxZl2uCL.__AC_SY445_SX342_QL70_ML2_.jpg",
       "https://m.media-amazon.com/images/I/91SS-CK6ttL._AC_SY741_.jpg",
       "https://m.media-amazon.com/images/I/81Vf8HziR-L._AC_SY741_.jpg",
-      "https://m.media-amazon.com/images/I/719dlr3PsJL._AC_SY741_.jpg"
+      "https://m.media-amazon.com/images/I/719dlr3PsJL._AC_SY741_.jpg",
     ],
     "createdAt": "2021-03-15T08:00:00Z",
     "updatedAt": "2023-06-10T16:30:00Z"
   },
-  {
-    "name": "Jlowesun Women's Sports T-Shirts and Tops Short Sleeve, Lightweight Functional Back Sport Sport, Ladies, Round Neck Sports Ladies Suitable for Fitness Running Yoga",
-    "slug": "Jlowesun-Womens-Sports-T-Shirts",
-    "category": "clothes",
-    "subCategory": "women",
+   {
+    "name": "Jlowesun Women's Sports T-Shirts and Tops Short Sleeve, Lightweight Functional Back Sport Sport, Ladies, Round Neck Sports Ladies Suitable for Fitness Running Yoga ",
+    "category: "clothes",
+    "subCategory: "women",
     "price": 129.99,
     "discount": 15,
     "stock": 250,
     "sold": 1840,
     "rating": 4.6,
-    "banner": "https://i.pinimg.com/736x/a0/04/7c/a0047c6fbe7355ce655176da3b4cba5e.jpg",
     "reviews": 1250,
+    "banner": "https://m.media-amazon.com/images/S/aplus-media-library-service-media/f6f098fa-cd46-425b-ae21-1a52b89abce0.__CR0,0,970,300_PT0_SX970_V1___.jpg",
     "brand": "Anker",
     "description": "Active Noise Cancelling Wireless Earbuds, 9Hrs Playtime, 6 Mics for Calls, HearID Custom EQ, Wireless Charging, Bluetooth 5.0, for Home Office.",
     "features": [
@@ -247,23 +211,22 @@ export async function GET() {
       "https://m.media-amazon.com/images/I/41JhP0-9QaL._AC_SX679_.jpg",
       "https://m.media-amazon.com/images/I/91SS-CK6ttL._AC_SY741_.jpg",
       "https://m.media-amazon.com/images/I/81Vf8HziR-L._AC_SY741_.jpg",
-      "https://m.media-amazon.com/images/I/719dlr3PsJL._AC_SY741_.jpg"
+      "https://m.media-amazon.com/images/I/719dlr3PsJL._AC_SY741_.jpg",
     ],
     "createdAt": "2023-01-15T08:00:00Z",
     "updatedAt": "2023-05-20T10:30:00Z"
   },
   {
-    "name": "Cecil Style Linda Débardeur Femme",
-    "slug": "Cecil-Style-Linda-Debardeur",
-    "category": "clothes",
-    "subCategory": "women",
+    "name": "Cecil Style Linda Débardeur Femme ",
+    "category: "clothes",
+    "subCategory: "women",
     "price": 199.95,
     "discount": 20,
     "stock": 180,
     "sold": 3245,
     "rating": 4.4,
-    "banner": "https://i.pinimg.com/736x/a0/04/7c/a0047c6fbe7355ce655176da3b4cba5e.jpg",
     "reviews": 2870,
+    "banner": "https://m.media-amazon.com/images/S/aplus-media-library-service-media/f6f098fa-cd46-425b-ae21-1a52b89abce0.__CR0,0,970,300_PT0_SX970_V1___.jpg",
     "brand": "Fitbit",
     "description": "Built-in GPS, 24/7 heart rate, Alexa built-in, sleep tracking, 6+ days battery life, blood oxygen tracking.",
     "features": [
@@ -284,23 +247,22 @@ export async function GET() {
       "https://m.media-amazon.com/images/I/61mVV6mgR6L._AC_SX569_.jpg",
       "https://m.media-amazon.com/images/I/91SS-CK6ttL._AC_SY741_.jpg",
       "https://m.media-amazon.com/images/I/81Vf8HziR-L._AC_SY741_.jpg",
-      "https://m.media-amazon.com/images/I/719dlr3PsJL._AC_SY741_.jpg"
+      "https://m.media-amazon.com/images/I/719dlr3PsJL._AC_SY741_.jpg",
     ],
     "createdAt": "2022-11-10T08:00:00Z",
     "updatedAt": "2023-04-15T09:15:00Z"
   },
   {
-    "name": "icyzone Sport Women's Short-Sleeved T-Shirt",
-    "slug": "icyzone-Sport-Womens-Short",
-    "category": "clothes",
-    "subCategory": "women",
+    "name": "icyzone Sport Women's Short-Sleeved T-Shirt ",
+    "category: "clothes",
+    "subCategory: "women",
     "price": 99.99,
     "discount": 25,
     "stock": 95,
     "sold": 8760,
     "rating": 4.8,
-    "banner": "https://i.pinimg.com/736x/a0/04/7c/a0047c6fbe7355ce655176da3b4cba5e.jpg",
     "reviews": 12500,
+    "banner": "https://m.media-amazon.com/images/S/aplus-media-library-service-media/f6f098fa-cd46-425b-ae21-1a52b89abce0.__CR0,0,970,300_PT0_SX970_V1___.jpg",
     "brand": "Ninja",
     "description": "4 Quart Capacity, Uses up to 75% Less Fat Than Traditional Frying Methods, Air Fry, Roast, Reheat & Dehydrate.",
     "features": [
@@ -321,23 +283,22 @@ export async function GET() {
       "https://m.media-amazon.com/images/I/61QaUZyBwKL._AC_SY606_.jpg",
       "https://m.media-amazon.com/images/I/91SS-CK6ttL._AC_SY741_.jpg",
       "https://m.media-amazon.com/images/I/81Vf8HziR-L._AC_SY741_.jpg",
-      "https://m.media-amazon.com/images/I/719dlr3PsJL._AC_SY741_.jpg"
+      "https://m.media-amazon.com/images/I/719dlr3PsJL._AC_SY741_.jpg",
     ],
     "createdAt": "2021-08-22T08:00:00Z",
     "updatedAt": "2023-03-18T14:20:00Z"
   },
   {
-    "name": "Wtouhe Women Tops Loose Blouses Summer T-Shirt 2021 Cheap Short Sleeve/Long Sleeve V Neck Button Casual Fashion Loose Tee Shirt Floral Print Casual Tops Chic Blouses Gift New Sale",
-    "slug": "Wtouhe-Women-Tops-Loose",
-    "category": "clothes",
-    "subCategory": "women",
+    "name": "Wtouhe Women Tops Loose Blouses Summer T-Shirt 2021 Cheap Short Sleeve/Long Sleeve V Neck Button Casual Fashion Loose Tee Shirt Floral Print Casual Tops Chic Blouses Gift New Sale ",
+    "category: "clothes",
+    "subCategory: "women",
     "price": 129.99,
     "discount": 0,
     "stock": 320,
     "sold": 15430,
     "rating": 4.7,
-    "banner": "https://i.pinimg.com/736x/a0/04/7c/a0047c6fbe7355ce655176da3b4cba5e.jpg",
     "reviews": 24350,
+    "banner": "https://m.media-amazon.com/images/S/aplus-media-library-service-media/f6f098fa-cd46-425b-ae21-1a52b89abce0.__CR0,0,970,300_PT0_SX970_V1___.jpg",
     "brand": "Keurig",
     "description": "Single Serve K-Cup Pod Coffee Brewer, 6 to 10 oz. Brew Sizes, Black",
     "features": [
@@ -358,23 +319,22 @@ export async function GET() {
       "https://m.media-amazon.com/images/I/61E27tfQcoL._AC_SX679_.jpg",
       "https://m.media-amazon.com/images/I/91SS-CK6ttL._AC_SY741_.jpg",
       "https://m.media-amazon.com/images/I/81Vf8HziR-L._AC_SY741_.jpg",
-      "https://m.media-amazon.com/images/I/719dlr3PsJL._AC_SY741_.jpg"
+      "https://m.media-amazon.com/images/I/719dlr3PsJL._AC_SY741_.jpg",
     ],
     "createdAt": "2020-05-10T08:00:00Z",
     "updatedAt": "2023-02-28T11:45:00Z"
   },
   {
-    "name": "HUIFUAO Women's V Neck 3/4 Sleeve T Shirts for Women Summer Basic Elegant Solid Color Black White Tops for Women",
-    "slug": "HUIFUAO-Womens-V-Neck",
-    "category": "clothes",
-    "subCategory": "women",
+    "name": "HUIFUAO Women's V Neck 3/4 Sleeve T Shirts for Women Summer Basic Elegant Solid Color Black White Tops for Women ",
+    "category: "clothes",
+    "subCategory: "women",
     "price": 12.59,
     "discount": 30,
     "stock": 480,
     "sold": 87650,
     "rating": 4.7,
-    "banner": "https://i.pinimg.com/736x/a0/04/7c/a0047c6fbe7355ce655176da3b4cba5e.jpg",
     "reviews": 87650,
+    "banner": "https://m.media-amazon.com/images/S/aplus-media-library-service-media/f6f098fa-cd46-425b-ae21-1a52b89abce0.__CR0,0,970,300_PT0_SX970_V1___.jpg",
     "brand": "Atria Books",
     "author": "Colleen Hoover",
     "description": "In this \"brave and heartbreaking novel that digs its claws into you and doesn't let go, long after you've finished it\" (Anna Todd, New York Times bestselling author) from the #1 New York Times bestselling author of All Your Perfects.",
@@ -396,14 +356,11 @@ export async function GET() {
       "https://m.media-amazon.com/images/I/61XthUVcVfL._AC_SX679_.jpg",
       "https://m.media-amazon.com/images/I/91SS-CK6ttL._AC_SY741_.jpg",
       "https://m.media-amazon.com/images/I/81Vf8HziR-L._AC_SY741_.jpg",
-      "https://m.media-amazon.com/images/I/719dlr3PsJL._AC_SY741_.jpg"
+      "https://m.media-amazon.com/images/I/719dlr3PsJL._AC_SY741_.jpg",
     ],
     "createdAt": "2021-03-15T08:00:00Z",
     "updatedAt": "2023-06-10T16:30:00Z"
   }
-]);
-    return NextResponse.json({ message: "All added" });
-  } catch (err) {
-    return NextResponse.json({ error: err }, { status: 500 });
-  }
-}
+]
+
+

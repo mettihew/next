@@ -8,7 +8,7 @@ interface Product {
   name: string;
   slug: string;
   price: number;
-  images: { url: string; alt?: string }[];
+  images: string[];
 }
 
 
@@ -20,8 +20,8 @@ export default function ProductList({ products }: { products: Product[] }) {
         <div key={product._id} className="border rounded shadow">
           <Link href={`/products/${product.slug}/${product._id}`}>
             <Image
-              src={product.images[0]?.url || '/placeholder.png'}
-              alt={product.images[0]?.alt || product.name}
+              src={product.images[0] || '/placeholder.png'}
+              alt={product.name}
               width={1000}
               height={0}
               className="w-full h-[200px] object-contain"

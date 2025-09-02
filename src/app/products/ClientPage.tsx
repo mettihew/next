@@ -12,7 +12,7 @@ type Product = {
   name: string;
   slug: string;
   price: number;
-  images: { url: string; alt?: string }[];
+  images: [];
 };
 
 type ProductData = {
@@ -68,7 +68,7 @@ export default function ClientPage() {
         <div>
           <ProductList products={data.products} />
           <div className="mt-4 flex items-center gap-4">
-            <button disabled={page === 1} onClick={() => updatePage(page - 1)}>
+            <button disabled={page === 1} onClick={() => updatePage(page - 1)} className=' cursor-pointer'>
               Previous
             </button>
             <span>
@@ -77,6 +77,7 @@ export default function ClientPage() {
             <button
               disabled={page === data.totalPages}
               onClick={() => updatePage(page + 1)}
+              className='cursor-pointer'
             >
               Next
             </button>

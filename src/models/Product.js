@@ -1,12 +1,14 @@
-import mongoose, { Schema } from 'mongoose';
+// import mongoose, { Schema } from 'mongoose';
+import mongoose from 'mongoose';
+
 
 // Separate review schema for clarity
-const reviewSchema = new Schema({
-  user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-  rating: { type: Number, required: true },
-  comment: { type: String },
-  createdAt: { type: Date, default: Date.now }
-});
+// const reviewSchema = new Schema({
+//   user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+//   rating: { type: Number, required: true },
+//   comment: { type: String },
+//   createdAt: { type: Date, default: Date.now }
+// });
 
 const productSchema = new mongoose.Schema(
   {
@@ -27,13 +29,9 @@ const productSchema = new mongoose.Schema(
 
     featured: { type: Boolean, default: false },
     isActive: { type: Boolean, default: true },
-    images: [
-      {
-        url: { type: String, required: true },
-        alt: { type: String }
-      }
-    ],
-  reviews: [reviewSchema],
+    images: [{ type: String }],
+    
+  reviews: { type: Number, default: 0 },
   rating: { type: Number, default: 0 },
   banner: { type: String, required: true },
   numReviews: { type: Number, default: 0 }

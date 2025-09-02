@@ -1,13 +1,14 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { Loader2 } from "lucide-react"; // spinner icon
+import { Loader2 } from "lucide-react"; 
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
@@ -26,7 +27,6 @@ export default function LoginPage() {
       if (!res.ok) {
         setError(data.error || "Something went wrong 😢");
       } else {
-        // Optional: redirect or do something with data
          window.location.href = "/dashboard";
       }
     } catch (err) {
@@ -42,8 +42,8 @@ export default function LoginPage() {
         onSubmit={handleLogin}
         className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md space-y-6"
       >
-        <h2 className="text-2xl font-bold text-gray-900 text-center">Sign in to Eesy4</h2>
-        <p className="text-sm text-gray-500 text-center">Your eBay-style login 🛒</p>
+        <h2 className="text-2xl font-bold text-gray-900 text-center">Sign in</h2>
+        <p className="text-sm text-gray-500 text-center">Login to your account 🛒</p>
 
         <div className="flex flex-col space-y-2">
           <label className="text-sm font-medium text-gray-700">Email</label>

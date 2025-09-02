@@ -3,8 +3,10 @@
 import { useState, useRef, useEffect } from "react";
 import { Search, ShoppingCart, Heart, Bell, User } from "lucide-react";
 import Link from "next/link";
+
 import { motion, AnimatePresence } from 'framer-motion';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
+
 
 
 interface Suggestion {
@@ -35,21 +37,53 @@ export default function HeaderClient({ user }: HeaderClientProps) {
 
   const categories = [ "All Categories", "Electronics", "Fashion", "Home & Garden", "Collectibles", "Sports", "Toys", "Business & Industrial",];
 
-   useEffect(() => {
-    const delayDebounce = setTimeout(async () => {
-      if (searchQuery.trim().length >= 2) {
-        const res = await fetch(`/api/products/suggestions?query=${searchQuery}`);
-        const data = await res.json();
-        setSuggestions(data);
-        setShowDropdown(true);
-      } else {
-        setSuggestions([]);
-        setShowDropdown(false);
-      }
-    }, 50);
+  
+const pathname = usePathname();
+  // DELETE THIS ENTIRE FIRST USEEFFECT BLOCK:
+// useEffect(() => {
+//   const delayDebounce = setTimeout(async () => {
+//     if (searchQuery.trim().length >= 2) {
+//       const res = await fetch(`/api/products/suggestions?query=${searchQuery}`);
+//       const data = await res.json();
+//       setSuggestions(data);
+//       setShowDropdown(true);
+//     } else {
+//       setSuggestions([]);
+//       setShowDropdown(false);
+//     }
+//   }, 50);
+// KEEP THIS SECOND USEEFFECT BLOCK (it has the cleanup):
+useEffect(() => {
+  const delayDebounce = setTimeout(async () => {
+    if (searchQuery.trim().length >= 2) {
+      const res = await fetch(`/api/products/suggestions?query=${searchQuery}`);
+      const data = await res.json();
+      setSuggestions(data);
+      setShowDropdown(true);
+    } else {
+      setSuggestions([]);
+      setShowDropdown(false);
+    }
+  }, 50);
 
-    return () => clearTimeout(delayDebounce);
-  }, [searchQuery]);
+  return () => clearTimeout(delayDebounce);
+}, [searchQuery]);
+
+// Add this new useEffect for closing the mobile menu
+useEffect(() => {
+  setIsMobileMenuOpen(false); // Close the mobile menu on navigation
+}, [pathname]); // This runs every time the pathname changes
+
+
+
+
+
+
+
+
+
+
+
 
  const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -76,7 +110,7 @@ export default function HeaderClient({ user }: HeaderClientProps) {
             <Link href="#" className="hover:text-yellow-300">Help & Contact</Link>
           </div>
           <div className="flex items-center space-x-4">
-            <Link href="#" className="hover:text-yellow-300">Ship to</Link>
+            <Link href="/products" className="hover:text-yellow-300">Products</Link>
             <div className="flex items-center space-x-2">
               <User className="w-4 h-4" />
               <Link href="/login" className="hover:text-yellow-300">Sign In</Link>
@@ -117,108 +151,103 @@ export default function HeaderClient({ user }: HeaderClientProps) {
 
 
 
+
+
+
           {/* Search Bar - Desktop */}
-          <div className="hidden md:flex flex-1 max-w-2xl mx-6">
+<div className="hidden md:flex flex-1 max-w-2xl mx-2">
+  <form onSubmit={handleSearch} className="relative flex w-full">
+    <div className="relative flex-grow">
+      <div className="relative">
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="w-full pl-10 py-2 border border-gray-300 rounded-l-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Search for anything..."
+        />
+        <button 
+          type="submit"
+          className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-blue-600 focus:outline-none"
+        >
+          <Search className="w-5 h-5" />
+        </button>
+      </div>
 
 
-              {user?.username && (
-              <span className="ml-4 text-gray-900">
-                Hello, {user.username}
-              </span>
-            )}
+       
 
+            
 
-            <form onSubmit={handleSearch} className="relative flex w-full">
-              <div className="relative flex-grow">
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-4 pr-32 py-2 border border-gray-300 rounded-l-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="Search for anything..."
-                />
-                <button 
-                  type="submit"
-                  className="absolute right-0 top-0 h-full px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-r-full flex items-center"
-                >
-                  <Search className="w-5 h-5" />
-                </button>
+      {showDropdown && suggestions.length > 0 && (
+        <AnimatePresence>
+          <motion.ul
+            className="absolute z-20 bg-white border border-gray-200 w-full mt-1 rounded shadow"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -5 }}
+            transition={{ duration: 0.2 }}
+          >
+            {suggestions.map((s) => (
+              <motion.li
+                key={s._id}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -10 }}
+                transition={{ duration: 0.2 }}
+                className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm"
+                onClick={() => handleSuggestionClick(s.slug, s._id)}
+              >
+                {s.name}
+              </motion.li>
+            ))}
+          </motion.ul>
+        </AnimatePresence>
+      )}
+    </div>
 
+    {/* Category dropdown - unchanged */}
+    <div className="relative" ref={dropdownRef}>
+      <button
+        type="button"
+        onClick={() => setIsCategoryOpen(!isCategoryOpen)}
+        className="h-full px-4 py-2 border-t border-b border-r border-gray-300 bg-gray-100 hover:bg-gray-200 text-sm font-medium text-gray-700 whitespace-nowrap rounded-r-full"
+      >
+        {selectedCategory}
+        <svg
+          className={`ml-2 w-4 h-4 inline transition-transform ${isCategoryOpen ? "rotate-180" : ""}`}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
 
-
-
-
-            {showDropdown && suggestions.length > 0 && (
-              <AnimatePresence>
-                <motion.ul
-                  className="absolute z-20 bg-white border border-gray-200 w-full mt-1 rounded shadow"
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -5 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {suggestions.map((s) => (
-                    <motion.li
-                      key={s._id}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -10 }}
-                      transition={{ duration: 0.2 }}
-                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm"
-                      onClick={() => handleSuggestionClick(s.slug, s._id)}
-                    >
-                      {s.name}
-                    </motion.li>
-                  ))}
-                </motion.ul>
-              </AnimatePresence>
-            )}
-
-
-
-              </div>
-
-              {/* Category dropdown */}
-              <div className="relative" ref={dropdownRef}>
+      {isCategoryOpen && (
+        <div className="absolute right-0 mt-1 w-56 bg-white rounded-md shadow-lg z-10 border border-gray-200">
+          <ul className="py-1 text-sm text-gray-700 max-h-96 overflow-y-auto">
+            {categories.map((category) => (
+              <li key={category}>
                 <button
                   type="button"
-                  onClick={() => setIsCategoryOpen(!isCategoryOpen)}
-                  className="h-full px-4 py-2 border-t border-b border-r border-gray-300 bg-gray-100 hover:bg-gray-200 text-sm font-medium text-gray-700 whitespace-nowrap rounded-r-full"
+                  onClick={() => {
+                    setSelectedCategory(category);
+                    setIsCategoryOpen(false);
+                  }}
+                  className={`block px-4 py-2 w-full text-left hover:bg-gray-100 ${selectedCategory === category ? "bg-blue-50 text-blue-600" : ""}`}
                 >
-                  {selectedCategory}
-                  <svg
-                    className={`ml-2 w-4 h-4 inline transition-transform ${isCategoryOpen ? "rotate-180" : ""}`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
+                  {category}
                 </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  </form>
+</div>
 
-                {isCategoryOpen && (
-                  <div className="absolute right-0 mt-1 w-56 bg-white rounded-md shadow-lg z-10 border border-gray-200">
-                    <ul className="py-1 text-sm text-gray-700 max-h-96 overflow-y-auto">
-                      {categories.map((category) => (
-                        <li key={category}>
-                          <button
-                            type="button"
-                            onClick={() => {
-                              setSelectedCategory(category);
-                              setIsCategoryOpen(false);
-                            }}
-                            className={`block px-4 py-2 w-full text-left hover:bg-gray-100 ${selectedCategory === category ? "bg-blue-50 text-blue-600" : ""}`}
-                          >
-                            {category}
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            </form>
-          </div>
 
 
 
@@ -239,12 +268,23 @@ export default function HeaderClient({ user }: HeaderClientProps) {
               <span className="text-sm">Cart</span>
               <span className="ml-1 bg-blue-600 text-white text-xs px-1.5 py-0.5 rounded-full">0</span>
             </button>
+
+            {user?.username ? (
+            <Link href="/dashboard" className="flex items-center text-gray-700 hover:text-blue-600">
+                Hello, {user.username}
+            </Link>
+            ) : 
+            <Link href="/login" className="flex items-center text-gray-700 hover:text-blue-600">
+            login</Link>}
+
+
           </div>
         </div>
 
         {/* Mobile Search - Hidden on desktop */}
         <div className="mt-3 md:hidden">
       
+
 <form onSubmit={handleSearch} className="flex items-center w-full max-w-2xl border border-gray-300 rounded-full overflow-hidden bg-white">
   {/* Search icon */}
   <div className="px-3 flex items-center text-gray-500">
@@ -303,13 +343,11 @@ export default function HeaderClient({ user }: HeaderClientProps) {
        ))}
      </motion.ul>
    </AnimatePresence>
- )}       
+ )}
+
+
+          
         </div>
-
-
-
-
-        
       </div>
 
       {/* Mobile Menu */}
@@ -317,7 +355,7 @@ export default function HeaderClient({ user }: HeaderClientProps) {
         <div className="md:hidden bg-white border-t">
           <div className="container mx-auto px-4 py-2">
             <div className="flex flex-col space-y-2">
-              <Link href="#" className="py-2 text-gray-700 hover:text-blue-600">Daily Deals</Link>
+              <Link href="/products" className="py-2 text-gray-700 hover:text-blue-600">Daily Deals</Link>
               <Link href="#" className="py-2 text-gray-700 hover:text-blue-600">Categories</Link>
               <Link href="#" className="py-2 text-gray-700 hover:text-blue-600">Sell</Link>
               <Link href="#" className="py-2 text-gray-700 hover:text-blue-600">Help & Contact</Link>

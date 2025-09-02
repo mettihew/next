@@ -19,7 +19,8 @@ type Product = {
   brand: string;
   description: string;
   specifications: Record<string, string | string[]>;
-  images: { url: string; alt: string }[];
+  images: string[];
+  banner: string;
   rating: number;
   numReviews: number;
   stock: number;
@@ -70,6 +71,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       </div>
     );
   };
+  
 
   return (
     <main className="py-8 px-4 max-w-7xl mx-auto">
@@ -86,14 +88,14 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     <p className="text-lg font-semibold text-gray-600 mb-2">Product Images</p>
     <div className="h-[400px]">
       <Image
-        src={product.images[0].url}
-        alt={product.images[0].alt}
+        src={product.images[0]}
+        alt={product.name}
         width={600}
         height={400}
         loading="eager"
         className="w-full h-auto max-h-[400px] object-contain"
         priority
-        unoptimized={!product.images[0].url.startsWith('http')}
+        // unoptimized={!product.images[0].startsWith('http')}
       />
     </div>
 
@@ -188,6 +190,20 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
       </div>
 </div>
+
+
+
+
+ {/* banner  */}
+<Image
+  src={"https://m.media-amazon.com/images/S/aplus-media-library-service-media/f6f098fa-cd46-425b-ae21-1a52b89abce0.__CR0,0,970,300_PT0_SX970_V1___.jpg"}
+  alt={"banner"}
+  width={10000}
+  height={10000}
+  className="w-full h-auto object-contain mt-14"
+/>
+
+
 
 
       {/* Reviews Section */}
