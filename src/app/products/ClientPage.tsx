@@ -81,6 +81,9 @@ export default function ClientPage() {
             >
               Next
             </button>
+              <button disabled={page === 1} onClick={() => updatePage(page - 1)} className=' cursor-pointer'>
+              last
+            </button>
           </div>
         </div>
       )}
