@@ -4,54 +4,10 @@ export const dynamic = 'force-dynamic';
 import FeaturedProducts from "@/components/FeaturedProducts";
 import Image from "next/image";
 import Link from "next/link";
-import { Star } from 'lucide-react';  
 
 import RouterSpinnerLink from "@/components/RouterSpinnerLink";
 import { Button } from "@/components/ui/button";
 import ProductGrid from "@/components/ProductGrid";
-
-
-
-const coffee1 = [
-  {
-    id: 1,
-    name: "Premium Espresso Machine",
-    image: "/images/del/2.jpg",
-    rating: 4,
-    reviewCount: 1024,
-    price: 249.99,
-    originalPrice: 299.99,
-    isPrime: true
-  },
-   {
-    id: 2,
-    name: "Premium Espresso Machine",
-    image: "/images/del/2.jpg",
-    rating: 4,
-    reviewCount: 1024,
-    price: 249.99,
-    originalPrice: 299.99,
-    isPrime: true
-  }, {
-    id: 3,
-    name: "Premium Espresso Machine",
-    image: "/images/del/2.jpg",
-    rating: 4,
-    reviewCount: 1024,
-    price: 249.99,
-    originalPrice: 299.99,
-    isPrime: true
-  },{
-    id: 4,
-    name: "Premium Espresso Machine",
-    image: "/images/del/2.jpg",
-    rating: 4,
-    reviewCount: 1024,
-    price: 249.99,
-    originalPrice: 299.99,
-    isPrime: true
-  },
-];
 
 
 const coffee2 = [
@@ -59,39 +15,19 @@ const coffee2 = [
     id: 1,
     name: "Premium Espresso Machine",
     image: "/images/del/2.jpg",
-    rating: 4,
-    reviewCount: 1024,
-    price: 249.99,
-    originalPrice: 299.99,
-    isPrime: true
   },
    {
     id: 2,
     name: "Premium Espresso Machine",
     image: "/images/del/3.jpg",
-    rating: 4,
-    reviewCount: 1024,
-    price: 249.99,
-    originalPrice: 299.99,
-    isPrime: true
   }, {
     id: 3,
     name: "Premium Espresso Machine",
     image: "/images/del/4.jpg",
-    rating: 4,
-    reviewCount: 1024,
-    price: 249.99,
-    originalPrice: 299.99,
-    isPrime: true
   },{
     id: 4,
     name: "Premium Espresso Machine",
     image: "/images/del/5.jpg",
-    rating: 4,
-    reviewCount: 1024,
-    price: 249.99,
-    originalPrice: 299.99,
-    isPrime: true
   },
 ];
 
@@ -102,41 +38,65 @@ const coffee3 = [
     id: 1,
     name: "Premium Espresso Machine",
     image: "/images/del/6.jpg",
-    rating: 4,
-    reviewCount: 1024,
-    price: 249.99,
-    originalPrice: 299.99,
-    isPrime: true
   },
    {
     id: 2,
     name: "Premium Espresso Machine",
     image: "/images/del/7.jpg",
-    rating: 4,
-    reviewCount: 1024,
-    price: 249.99,
-    originalPrice: 299.99,
-    isPrime: true
   }, {
     id: 3,
     name: "Premium Espresso Machine",
     image: "/images/del/8.jpg",
-    rating: 4,
-    reviewCount: 1024,
-    price: 249.99,
-    originalPrice: 299.99,
-    isPrime: true
   },{
     id: 4,
     name: "Premium Espresso Machine",
     image: "/images/del/10.jpg",
-    rating: 4,
-    reviewCount: 1024,
-    price: 249.99,
-    originalPrice: 299.99,
-    isPrime: true
   },
 ];
+
+
+const pets = [
+  {
+    id: 1,
+    name: "Dogs",
+    image: "/images/222/dog1.jpg",
+  },
+   {
+    id: 2,
+    name: "Cats",
+    image: "/images/222/cat1.jpg",
+  }, {
+    id: 3,
+    name: "Hamester",
+    image: "/images/222/ham1.jpg",
+  },{
+    id: 4,
+    name: "Toys",
+    image: "/images/222/toy1.jpg",
+  },
+];
+
+const decorations = [
+  {
+    id: 1,
+    name: "home decorations",
+    image: "/images/222/home1.jpg",
+  },
+   {
+    id: 2,
+    name: "home decorations",
+    image: "/images/222/home2.jpg",
+  }, {
+    id: 3,
+    name: "home decorations",
+    image: "/images/222/home3.jpg",
+  },{
+    id: 4,
+    name: "home decorations",
+    image: "/images/222/home4.jpg",
+  },
+];
+
 
 
 // type ProductType = {
@@ -160,6 +120,8 @@ const coffee3 = [
 // }
 
 export default async function HomePage() {
+
+
   // let products: ProductType[] = [];
 
   // try {
@@ -211,30 +173,18 @@ export default async function HomePage() {
 
 
   {/* banner of sunglesses extremly hot fashion lady  */}
-   <div className="flex items-center justify-between mt-6 ">
+      <div className="flex items-center justify-between mt-6 md:hidden">
         <h2 className="text-[18px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] font-bold ml-2 ">Fashion Products</h2>
         <RouterSpinnerLink href="/products">
           <Button variant="default">Explore All</Button>
         </RouterSpinnerLink>
       </div>
-<div className="flex items-center justify-center ">
-      <Image src={'/images/fashion/fashion-woman-banner2.jpg'} alt="fashion woman banner" width={1920} height={0} className="w-full h-auto max-w-100" />
-</div>
+
+      <div className="flex items-center justify-center">
+            <Image src={'/images/fashion/fashion-woman-banner2.jpg'} alt="fashion woman banner" width={1920} height={0} className="w-full h-auto max-w-100 md:hidden" />
+      </div>
 
 
-
-
-     
-
-      <FeaturedProducts />
-
-
-
-<ProductGrid
-  title="Coffee Makers 1"
-  products={coffee1}
-  href="/products/coffee-makers"
-/>
 
 <ProductGrid
   title="Coffee Makers 2"
@@ -248,6 +198,78 @@ export default async function HomePage() {
   href="/products/coffee-makers"
 />
 
+<ProductGrid
+  title="Pets Toys"
+  products={pets}
+  href="/products/toys"
+/>
+
+<ProductGrid
+  title="Home Decorations"
+  products={decorations}
+  href="/products/decorations"
+/>
+
+
+<div className="flex gap-2 overflow-x-auto p-4">
+  {[
+    { src: "/images/222/dress1.jpg", title: "Summer Dress", price: "$39.99" },
+    { src: "/images/222/dress2.jpg", title: "Casual Outfit", price: "$29.99" },
+    { src: "/images/222/dress3.jpg", title: "Elegant Gown", price: "$59.99" },
+    { src: "/images/222/dress4.jpg", title: "Party Dress", price: "$45.99" },
+    { src: "/images/222/dress5.jpg", title: "Classic Look", price: "$35.99" },
+  ].map((item, i) => (
+    <div
+      key={i}
+      className="flex-shrink-0 w-[170px] flex flex-col items-center text-center"
+    >
+      <Image
+        src={item.src}
+        alt={item.title}
+        width={1000000}
+        height={0}
+        className="rounded-[10px] object-cover"
+      />
+      <p className="mt-2 text-sm font-semibold">{item.title}</p>
+      <p className="text-gray-500">{item.price}</p>
+      <button className="mt-1 px-3 py-1 bg-black text-white text-xs rounded-lg hover:bg-gray-800">
+        Shop Now
+      </button>
+    </div>
+  ))}
+</div>
+
+<div className="flex gap-2 overflow-x-auto p-4">
+  {[
+    { src: "/images/222/dress1.webp", title: "Summer Dress", price: "$39.99" },
+    { src: "/images/222/dress2.webp", title: "Casual Outfit", price: "$29.99" },
+    { src: "/images/222/dress3.webp", title: "Elegant Gown", price: "$59.99" },
+    { src: "/images/222/dress4.webp", title: "Classic Look", price: "$35.99" },
+    { src: "/images/222/dress5.webp", title: "Fancy", price: "$35.99" },
+  ].map((item, i) => (
+    <div
+      key={i}
+      className="flex-shrink-0 w-[170px] flex flex-col items-center text-center"
+    >
+      <Image
+        src={item.src}
+        alt={item.title}
+        width={1000000}
+        height={0}
+        className="rounded-[10px] object-cover"
+      />
+      <p className="mt-2 text-sm font-semibold">{item.title}</p>
+      <p className="text-gray-500">{item.price}</p>
+      <button className="mt-1 px-3 py-1 bg-black text-white text-xs rounded-lg hover:bg-gray-800">
+        Shop Now
+      </button>
+    </div>
+  ))}
+</div>
+
+
+
+<FeaturedProducts />
 
     </main>
   );

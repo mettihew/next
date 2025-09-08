@@ -4,6 +4,12 @@ import { Atom, Github, Mail, Linkedin, Sparkles } from 'lucide-react';
 
 const values = [
   {
+    title: 'Login/Registration Updated',
+    emoji: '💻',
+    description: 'Login/Registration Updated with Zustand all over the app. Pages re-load without hard refresh now',
+    timestamp: 'Sep 2025',
+  },
+  {
     title: 'Github Collaboration',
     emoji: '🤝',
     description: 'Ali24 updated eesy.ir cart page',
@@ -25,23 +31,23 @@ const values = [
 
 export default function AboutPage() {
   return (
-    <main className="max-w-5xl mx-auto py-10 px-4 text-gray-700">
+    <main className="max-w-5xl mx-auto py-10 px-4">
 
 
 
 
-   <section className='bg-yellow-400 '>
-        <h2 className="text-2xl font-semibold text-gray-800">📇 Contact</h2>
-        <div className="space-y-2 text-gray-600">
+      <section className='bg-yellow-400 '>
+        <h2 className="text-2xl font-semibold">📇 Contact</h2>
+        <div className="space-y-2">
 
           <div className='flex items-center gap-4'>
             <Image src={'/fav.ico'} alt="Me" width={60} height={60} className="rounded-full" />
-          <p className="text-[18px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px]">
-    Mahdi Keramati</p>
+            <p className="text-[18px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px]">
+              Mahdi Keramati</p>
           </div>
 
 
-   
+
 
 
           <div className="flex flex-wrap items-center justify-center gap-6 text-blue-600 text-sm ">
@@ -87,8 +93,7 @@ export default function AboutPage() {
 
       <section className="mb-12">
         <p>Next.js</p>
-        <p></p>
-            
+        <p>TypeScript</p>
       </section>
 
 
@@ -102,22 +107,22 @@ export default function AboutPage() {
 
 
       <section className="mb-10">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">📜 Recent Updates</h2>
+        <h2 className="text-2xl font-semibold text-blue-100 mb-4">📜 Recent Updates</h2>
         <div className="grid gap-2">
           {values.map((value) => (
             <div key={value.title} className="p-4 border rounded-lg shadow-sm bg-white text-center">
               <div className="flex items-center justify-center gap-4">
                 <div className="text-3xl mb-2">{value.emoji}</div>
-                <h3 className="text-lg font-semibold text-gray-900">{value.title}</h3>
-                <p className="text-xs text-gray-400 mt-1">{value.timestamp}</p>
+                <h3 className="text-lg font-semibold">{value.title}</h3>
+                <p className="text-xs text-gray-100 mt-1">{value.timestamp}</p>
               </div>
-              <p className="text-sm text-gray-600">{value.description}</p>
+              <p className="text-sm text-gray-200">{value.description}</p>
             </div>
           ))}
         </div>
       </section>
 
-   
+
 
 
 

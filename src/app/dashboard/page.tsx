@@ -43,10 +43,8 @@ import {
   Heart, 
   User, 
   Settings, 
-  CreditCard,
   Package,
   TrendingUp,
-  Star,
   Clock
 } from "lucide-react";
 import Link from "next/link";
@@ -68,7 +66,7 @@ export default async function DashboardPage() {
                 Welcome back, {user.username}! 👋
               </h1>
               <p className="text-gray-600 mt-1">
-                Here's what's happening with your account today.
+                Heres whats happening with your account today.
               </p>
             </div>
             <div className="flex items-center space-x-3">
