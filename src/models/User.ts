@@ -63,9 +63,8 @@ const userSchema = new Schema(
   }
 );
 
-//
-// 🔐 Middleware: Hash password before saving
-//
+// HERE YOU HASH ANY PASSWORD USER LOGIN, THEN SAVING IT TO THE DATABASE, ITS THE BETTER APROACH -  it's more centralized and handles edge cases better.
+
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) return next();
 
@@ -79,18 +78,12 @@ userSchema.pre('save', async function (next) {
   }
 });
 
-//
-// 🔍 Method: Compare raw password with hashed password
-//
 userSchema.methods.comparePassword = async function (candidatePassword: string): Promise<boolean> {
   if (!this.password) throw new Error('Password not set on user');
 
   return bcrypt.compare(candidatePassword, this.password);
 };
 
-//
-// 🔑 Method: Create secure password reset token
-//
 userSchema.methods.createPasswordResetToken = function () {
   const rawToken = crypto.randomBytes(40).toString('hex');
 

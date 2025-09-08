@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import ProductList from './ProductList';
 import LoaderDots from '@/components/LoadingDots';
-
+import Pagination from '@/components/Pagination';
 
 type Product = {
   _id: string;
@@ -45,7 +45,7 @@ export default function ClientPage() {
       });
   }, [page]);
 
-  const updatePage = (newPage: number) => {
+  const handlePageChange = (newPage: number) => {
     const params = new URLSearchParams(searchParams.toString());
     params.set('page', newPage.toString());
     router.push(`/products?${params.toString()}`);
@@ -54,7 +54,7 @@ export default function ClientPage() {
   return (
     <main className="max-w-7xl mx-auto px-1 py-3">
       <div className="flex">
-        <h1 className="text-3xl font-bold mb-3">All Products</h1>
+        <h1 className="text-3xl font-bold mb-3 p-3">All Products</h1>
         {loading && (
           <div className="text-center text-gray-400 animate-pulse mt-2 ml-2">
             Loading products...
@@ -67,24 +67,11 @@ export default function ClientPage() {
       ) : (
         <div>
           <ProductList products={data.products} />
-          <div className="mt-4 flex items-center gap-4">
-            <button disabled={page === 1} onClick={() => updatePage(page - 1)} className=' cursor-pointer'>
-              Previous
-            </button>
-            <span>
-              Page {page} of {data.totalPages}
-            </span>
-            <button
-              disabled={page === data.totalPages}
-              onClick={() => updatePage(page + 1)}
-              className='cursor-pointer'
-            >
-              Next
-            </button>
-              <button disabled={page === 1} onClick={() => updatePage(page - 1)} className=' cursor-pointer'>
-              last
-            </button>
-          </div>
+          <Pagination 
+            currentPage={page}
+            totalPages={data.totalPages}
+            onPageChange={handlePageChange}
+          />
         </div>
       )}
     </main>

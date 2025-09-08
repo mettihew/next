@@ -86,49 +86,20 @@ export default function AboutPage() {
 
 
       <section className="mb-12">
-        {/* <h1 className="text-3xl font-bold mb-4 text-gray-900">🦁 Mettihew — Dev by Day, Philosopher by Night</h1> */}
-        <div className="space-y-4 leading-relaxed">
-          <p>I’m just a guy who learned English from YouTube pranks and coding from late-night chaos.</p>
-          <p>
-            Built my own e-commerce project with
-            <code className="bg-gray-100 px-1 rounded text-sm mx-1">Next.js</code>,
-            <code className="bg-gray-100 px-1 rounded text-sm mx-1">TypeScript</code>,
-            <code className="bg-gray-100 px-1 rounded text-sm mx-1">MongoDB</code>, and
-            <code className="bg-gray-100 px-1 rounded text-sm mx-1">Tailwind</code> — solo at first,
-            now with a best friend ChatGPT to improve the site performance.
-          </p>
-          <div>
-            <h2 className="font-semibold text-lg text-gray-800">🚀 What I’m Working On:</h2>
-            <ul className="list-disc list-inside space-y-1">
-              <li>🔍 Amazon-style search & filter for products</li>
-              <li>🛒 Zustand-based cart with localStorage sync</li>
-              <li>❤️ Clean UI that doesn’t look like a “butt checkout button”</li>
-              <li>🧠 Learning project management, GitHub Issues, and staying consistent</li>
-            </ul>
-          </div>
-          <div>
-            <h2 className="font-semibold text-lg text-gray-800">🔧 Stack I Love:</h2>
-            <ul className="list-disc list-inside space-y-1">
-              <li><code className="bg-gray-100 px-1 rounded text-sm">Next.js</code> + App Router</li>
-              <li><code className="bg-gray-100 px-1 rounded text-sm">Tailwind CSS</code></li>
-              <li><code className="bg-gray-100 px-1 rounded text-sm">MongoDB</code></li>
-              <li><code className="bg-gray-100 px-1 rounded text-sm">Zustand</code></li>
-              <li>Typing fast and breaking things faster</li>
-            </ul>
-          </div>
-          <div>
-            {/* <h2 className="font-semibold text-lg text-gray-800">🎭 Not Just Code:</h2>
-            <p>
-              I joke, I love, I ask weird questions, I mess up, and I get up. Not native in English,
-              but I <em className="italic">talk like I feel</em>, not like a textbook.
-            </p>
-            <blockquote className="border-l-4 border-pink-400 pl-4 italic text-gray-600">
-              “Sometimes my head gets ahead of my fingers. Sometimes my fingers.” — me
-            </blockquote> */}
-            <p className="text-lg font-medium">🎭 Let’s build. Let’s vibe. Let’s get real.</p>
-          </div>
-        </div>
+        <p>Next.js</p>
+        <p></p>
+            
       </section>
+
+
+
+
+
+
+
+
+
+
 
       <section className="mb-10">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">📜 Recent Updates</h2>
