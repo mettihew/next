@@ -1,6 +1,6 @@
 
 
-// app/api/products/category/[slug]/route.ts
+// app/api/products/category/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/dbConnect';
 import Product from '@/models/Product';

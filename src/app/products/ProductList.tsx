@@ -71,7 +71,7 @@ export default function ProductList({ products }: { products: Product[] }) {
             key={product._id}
             className="border rounded shadow hover:shadow-md transition-shadow"
           >
-            <Link href={`/products/${product.slug}/${product._id}`}>
+            <Link href={`/products/${product._id}`}>
               <div className="w-full h-[200px] relative">
                 <Image
                   src={product.images?.[0] || '/placeholder.png'}

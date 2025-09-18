@@ -27,7 +27,7 @@ type Product = {
 };
 
 async function getProduct(slug: string, id: string ): Promise<Product | null> {
-  const res = await fetch(`${baseUrl}/api/products/${slug}/${id}`, {
+  const res = await fetch(`${baseUrl}/api/products/${id}`, {
     cache: 'no-store',
     next: { tags: [`product-${id}`] },
   });

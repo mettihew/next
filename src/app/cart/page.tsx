@@ -90,7 +90,7 @@ useEffect(() => {
                   <li key={item.productId} className="py-6">
                     <div className="flex gap-4 items-center">
                       <div className="w-24 h-24 rounded-md overflow-hidde bg-gray-200">
-                        <Link href={`/products/${product.slug}/${product._id}`}>
+                        <Link href={`/products/${product._id}`}>
                         <Image
                           src={product.images[0]?.url || '/favi.ico'}
                           alt={product.images[0]?.alt || product.name}

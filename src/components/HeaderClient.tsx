@@ -80,7 +80,7 @@ useEffect(() => {
 
 
   const handleSuggestionClick = (slug: string, id: string) => {
-    router.push(`/products/${slug}/${id}`);
+    router.push(`/products/${id}`);
     setSearchQuery('');
     setShowDropdown(false);
   };
