@@ -1,0 +1,40 @@
+[
+  
+  {
+    "name": "",
+    "category": "",
+    "subCategory": "",
+    "price": 129.99,
+    "discount": 15,
+    "stock": 250,
+    "sold": 1840,
+    "rating": 4.6,
+    "reviews": 1250,
+    "banner": "",
+    "brand": "Anker",
+    "description": "Active Noise Cancelling Wireless Earbuds, 9Hrs Playtime, 6 Mics for Calls, HearID Custom EQ, Wireless Charging, Bluetooth 5.0, for Home Office.",
+    "features": [
+      "Active Noise Cancellation",
+      "HearID Custom Sound Profile",
+      "6-Mic AI Call Technology",
+      "9 Hours Playtime (26H with case)",
+      "Wireless Charging Supported"
+    ],
+    "specifications": {
+    "Material": "100% cotton jersey",
+    "Fit": "Regular fit",
+    "Neckline": "Crew neck",
+    "SleeveLength": "Short sleeve",
+    "SizeRange": ["S", "M", "L", "XL", "XXL"],
+    "ColorOptions": ["black", "white", "navy", "gray", "olive"]
+  },
+    "images": [
+      "",
+      "",
+      "",
+      "",
+    ],
+  },
+
+
+]

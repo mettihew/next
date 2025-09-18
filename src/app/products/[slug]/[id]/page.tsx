@@ -1,7 +1,6 @@
 
 import { notFound } from 'next/navigation';
 import Breadcrumb from '@/components/Breadcrumb';
-import ReviewForm from '@/components/ReviewForm';
 import ProductsClient from '@/components/ProductsClient';
 
 import Image from 'next/image';
@@ -204,30 +203,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 />
 
 
-
-
-      {/* Reviews Section */}
-      <section className="mt-16">
-        <h2 className="text-2xl font-bold mb-6">Customer Reviews</h2>
-        <div className="bg-yellow rounded-lg shadow-md p-6">
-          <div className="flex items-center mb-6">
-            <div className="text-4xl font-bold mr-4">{product.rating.toFixed(1)}</div>
-            <div>
-              {renderRating(product.rating)}
-              <p className="text-sm text-gray-600 mt-1">
-                Based on {product.numReviews} reviews
-              </p>
-            </div>
-          </div>
-          <div className="text-center py-8">
-            <p className="text-gray-500">No reviews yet. Be the first to review this product!</p>
-                  <ReviewForm productId={product._id}/>
-            <button className="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors">
-              Write a Review
-            </button>
-          </div>
-        </div>
-      </section>
+   
     </main>
   );
 }

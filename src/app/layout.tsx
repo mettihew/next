@@ -3,6 +3,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PageTransition from '@/components/PageTransition';
 import TopProgressBar from "@/components/TopProgressBar";
+import GlobalRouterSpinner from '@/components/GlobalRouterSpinner';
 
 
 export const metadata = {
@@ -27,6 +28,8 @@ export default function RootLayout({
         <TopProgressBar />
         {/* smooth pagination */}
          <PageTransition>
+          {/* showing loading... on every button or a tag click GlobalRouterSpinner */}
+        <GlobalRouterSpinner />
     {children}
   </PageTransition>
         <Footer />

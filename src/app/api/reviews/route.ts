@@ -1,14 +1,9 @@
+// app/api/reviews/route.ts
 import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 import dbConnect from "@/lib/dbConnect";
-import Product from "@/models/Product";
+import Review from "@/models/Review";
 import { cookies } from "next/headers";
-
-interface Review {
-  userId: string;
-  comment: string;
-  createdAt: Date;
-}
 
 const JWT_SECRET = process.env.JWT_SECRET!;
 
@@ -16,21 +11,21 @@ export async function POST(req: Request) {
   try {
     await dbConnect();
 
+    // ✅ Extract token (Authorization header or cookie)
     let token = null;
     const authHeader = req.headers.get("authorization");
-    if (authHeader && authHeader.startsWith("Bearer ")) {
+    if (authHeader?.startsWith("Bearer ")) {
       token = authHeader.split(" ")[1];
     }
-
     if (!token) {
-      const cookieStore = await cookies(); // await here
+      const cookieStore = await cookies();
       token = cookieStore.get("token")?.value || null;
     }
-
     if (!token) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Login to send a review" }, { status: 401 });
     }
 
+    // ✅ Verify token
     let payload: { userId: string };
     try {
       payload = jwt.verify(token, JWT_SECRET) as { userId: string };
@@ -38,33 +33,52 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
-    const { productId, review }: { productId: string; review: string } = await req.json();
-
-    if (!productId || !review) {
+    // ✅ Parse body
+    const { productId, rating, comment } = await req.json();
+    if (!productId || !rating || !comment) {
       return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
-    const reviewObj: Review = {
+    // ✅ Create review
+    const review = await Review.create({
       userId: payload.userId,
-      comment: review,
-      createdAt: new Date(),
-    };
-
-    const updatedProduct = await Product.findByIdAndUpdate(
       productId,
-      { $push: { reviews: reviewObj } },
-      { new: true }
-    )
-      .select("reviews")
-      .lean() as { reviews: Review[] } | null;
+      rating,
+      comment,
+    });
 
-    if (!updatedProduct) {
-      return NextResponse.json({ error: "Product not found" }, { status: 404 });
-    }
-
-    return NextResponse.json({ reviews: updatedProduct.reviews }, { status: 200 });
+    return NextResponse.json({ review }, { status: 201 });
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
     return NextResponse.json({ error: errorMessage }, { status: 500 });
+  }
+}
+
+
+
+export async function GET(req: Request) {
+  try {
+    // await connectDB();
+    await dbConnect();
+
+    const { searchParams } = new URL(req.url);
+    const productId = searchParams.get("productId");
+
+    if (!productId) {
+      return new Response(JSON.stringify({ error: "Missing productId" }), { status: 400 });
+    }
+
+    const reviews = await Review.find({ productId })
+      .populate("userId", "username") 
+      .sort({ createdAt: -1 })
+      .lean();
+
+    return NextResponse.json({ reviews }, { status: 200 });
+
+    // return new Response(JSON.stringify(reviews), { status: 200 });
+  } catch (error) {
+  const errorMessage = error instanceof Error ? error.message : String(error);
+  console.error("❌ Error fetching reviews:", errorMessage);
+  return new Response(JSON.stringify({ error: errorMessage }), { status: 500 });
   }
 }

@@ -7,7 +7,7 @@ import Link from "next/link";
 
 import RouterSpinnerLink from "@/components/RouterSpinnerLink";
 import { Button } from "@/components/ui/button";
-import ProductGrid from "@/components/ProductGrid";
+import ProductsHome from "@/components/ProductsHome";
 
 
 const coffee2 = [
@@ -98,40 +98,9 @@ const decorations = [
 ];
 
 
-
-// type ProductType = {
-//   _id: string;
-//   name: string;
-//   slug: string;
-//   price: number;
-//   images: { url: string; alt?: string }[];
-// };
-
-// async function getProducts(): Promise<ProductType[]> {
-//   const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
-//   const res = await fetch(`${baseUrl}/api/products/featured`, {
-//     method: 'GET',
-//     cache: 'no-store',
-//   });
-
-//   if (!res.ok) throw new Error('Failed to fetch products');
-
-//   return res.json();
-// }
-
 export default async function HomePage() {
 
-
-  // let products: ProductType[] = [];
-
-  // try {
-  //   products = await getProducts();
-  // } catch (error) {
-  //   console.error('Fetch error:', error);
-  // }
-
   return (
-    // <main className="container mx-auto px-4 py-6">
     <main className="container mx-auto">
 
 <div className="flex items-center justify-center p-2">
@@ -144,22 +113,22 @@ export default async function HomePage() {
 
  {/* there is deal for you ? */}
   <div className="flex border rounded m-2">
-        <div className="space-y-4 px-2 w-full m-2">
+        <div className="space-y-4 w-full m-2">
           <div>
             <div className="flex items-center justify-between w-full">
-              <h1 className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px]">
+              <h1 className="text-[16px] sm:text-[18px] md:text-[18px] lg:text-[20px] xl:text-[20px]">
                 Theres a deal for you, too
               </h1>
-              <button className=" border rounded px-3 py-2 text-[8px] sm:text-[8px] md:text-[10px] lg:text-[12px] xl:text-[14px]">
+              <button className=" border rounded p-1 text-[12px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px]">
                 Explore now
               </button>
             </div>
-            <p className="text-[12px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px]">
+            <p className="pt-2 text-[14px] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px]">
               Dont miss a chance to save on items youve been looking for.
             </p>
           </div>
           <div className="flex items-center justify-between">
-            <h1 className=" text-[12px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px]">
+            <h1 className=" text-[14px] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px]">
               Score these trending kicks
             </h1>
             <Link href="#" className="text-blue-500 underline text-[12px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px]">
@@ -168,7 +137,6 @@ export default async function HomePage() {
           </div>
         </div>
       </div> 
-
 
 
 
@@ -186,32 +154,33 @@ export default async function HomePage() {
 
 
 
-<ProductGrid
+<ProductsHome
   title="Coffee Makers 2"
   products={coffee2}
   href="/products/coffee-makers"
 />
 
-<ProductGrid
+<ProductsHome
   title="Coffee Makers 3"
   products={coffee3}
   href="/products/coffee-makers"
 />
 
-<ProductGrid
+<ProductsHome
   title="Pets Toys"
   products={pets}
   href="/products/toys"
 />
 
-<ProductGrid
+<ProductsHome
   title="Home Decorations"
   products={decorations}
   href="/products/decorations"
 />
 
 
-<div className="flex gap-2 overflow-x-auto p-4">
+
+<div className="flex space-x-4 overflow-x-auto">
   {[
     { src: "/images/222/dress1.jpg", title: "Summer Dress", price: "$39.99" },
     { src: "/images/222/dress2.jpg", title: "Casual Outfit", price: "$29.99" },
@@ -221,15 +190,19 @@ export default async function HomePage() {
   ].map((item, i) => (
     <div
       key={i}
-      className="flex-shrink-0 w-[170px] flex flex-col items-center text-center"
+      className="flex-shrink-0 w-[170px] sm:w-[220px] md:w-[300px] text-center"
     >
-      <Image
-        src={item.src}
-        alt={item.title}
-        width={1000000}
-        height={0}
-        className="rounded-[10px] object-cover"
-      />
+      <div className="relative w-full h-[220px] sm:h-[280px] md:h-[350px]">
+        <Image
+          src={item.src}
+          alt={item.title}
+          fill
+          className="rounded-[10px] object-cover"
+          sizes="(max-width: 640px) 170px,
+                 (max-width: 768px) 220px,
+                 300px"
+        />
+      </div>
       <p className="mt-2 text-sm font-semibold">{item.title}</p>
       <p className="text-gray-500">{item.price}</p>
       <button className="mt-1 px-3 py-1 bg-black text-white text-xs rounded-lg hover:bg-gray-800">
@@ -239,7 +212,10 @@ export default async function HomePage() {
   ))}
 </div>
 
-<div className="flex gap-2 overflow-x-auto p-4">
+
+
+
+<div className="flex space-x-4 overflow-x-auto">
   {[
     { src: "/images/222/dress1.webp", title: "Summer Dress", price: "$39.99" },
     { src: "/images/222/dress2.webp", title: "Casual Outfit", price: "$29.99" },
@@ -249,15 +225,19 @@ export default async function HomePage() {
   ].map((item, i) => (
     <div
       key={i}
-      className="flex-shrink-0 w-[170px] flex flex-col items-center text-center"
+      className="flex-shrink-0 w-[170px] sm:w-[220px] md:w-[300px] text-center"
     >
-      <Image
-        src={item.src}
-        alt={item.title}
-        width={1000000}
-        height={0}
-        className="rounded-[10px] object-cover"
-      />
+      <div className="relative w-full h-[220px] sm:h-[280px] md:h-[350px]">
+        <Image
+          src={item.src}
+          alt={item.title}
+          fill
+          className="rounded-[10px] object-cover"
+          sizes="(max-width: 640px) 170px,
+                 (max-width: 768px) 220px,
+                 300px"
+        />
+      </div>
       <p className="mt-2 text-sm font-semibold">{item.title}</p>
       <p className="text-gray-500">{item.price}</p>
       <button className="mt-1 px-3 py-1 bg-black text-white text-xs rounded-lg hover:bg-gray-800">
