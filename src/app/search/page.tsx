@@ -14,7 +14,6 @@ type ApiProduct = {
   name: string;
   brand: string;
   price: number;
-  slug: string;
   // images: { url: string; alt?: string }[];
   images: string[];
 };
@@ -25,7 +24,6 @@ type Product = {
   name: string;
   brand: string;
   price: number;
-  slug: string;
   images: string[]; // ProductList expects string[]
 };
 

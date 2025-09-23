@@ -10,7 +10,6 @@ import Pagination from '@/components/Pagination';
 type Product = {
   _id: string;
   name: string;
-  slug: string;
   price: number;
   images: string[]; // More specific typing
 };

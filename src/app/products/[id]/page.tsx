@@ -1,8 +1,6 @@
-
 import { notFound } from 'next/navigation';
 import Breadcrumb from '@/components/Breadcrumb';
 import ProductsClient from '@/components/ProductsClient';
-
 import Image from 'next/image';
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
@@ -10,7 +8,6 @@ const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
 type Product = {
   _id: string;
   name: string;
-  slug: string;
   price: number;
   discount?: number;
   category: string;
@@ -18,15 +15,16 @@ type Product = {
   brand: string;
   description: string;
   specifications: Record<string, string | string[]>;
-  images: string[];
-  banner: string;
+  productImages: string[];
+  userImages: string[];
+  // bannerImage: string;
   rating: number;
   numReviews: number;
   stock: number;
   sold: number;
 };
 
-async function getProduct(slug: string, id: string ): Promise<Product | null> {
+async function getProduct(id: string): Promise<Product | null> {
   const res = await fetch(`${baseUrl}/api/products/${id}`, {
     cache: 'no-store',
     next: { tags: [`product-${id}`] },
@@ -36,20 +34,36 @@ async function getProduct(slug: string, id: string ): Promise<Product | null> {
   return res.json();
 }
 
-export default async function ProductPage({ params }: { params: Promise<{ slug: string, id: string }> }) {
-  const { slug, id } = await params;
+
+// export default async function ProductPage({
+//   params,
+// }: {
+//   params: { id: string };
+// }) {
+//   const { id } = params;
+
+//   if (!id || typeof id !== 'string') {
+//     return notFound();
+//   }
+
+
+export default async function ProductPage({
+  params,
+}: {
+  params: Promise<{ id: string }>; // Add Promise wrapper
+}) {
+  const { id } = await params; // Await the params
 
   if (!id || typeof id !== 'string') {
     return notFound();
   }
 
-  const product = await getProduct(slug, id);
-
+  const product = await getProduct(id);
   if (!product) {
     return notFound();
   }
 
-  const discountedPrice = product.discount 
+  const discountedPrice = product.discount
     ? product.price * (1 - product.discount / 100)
     : null;
 
@@ -57,6 +71,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating % 1 >= 0.5;
     const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+
+console.log('this is the product you see over here =' , product);
+
 
     return (
       <div className="flex">
@@ -70,76 +87,57 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       </div>
     );
   };
-  
 
   return (
     <main className="py-8 px-4 max-w-7xl mx-auto">
+      <Breadcrumb />
 
-     <Breadcrumb />
+      <div className="flex flex-col md:flex-row">
+        {/* Left: Product Images and Description */}
+        <div className="md:w-1/2 mt-10">
+          <p className="text-lg font-semibold text-gray-600 mb-2">Product Images</p>
+          <div className="h-[400px]">
+            <Image
+              src={product.productImages[0]}
+              alt={product.name}
+              width={600}
+              height={400}
+              loading="eager"
+              className="w-full h-auto max-h-[400px] object-contain"
+              priority
+            />
+          </div>
 
-
-<div className="flex flex-col md:flex-row">
-
-
-  {/* Left: Product Images and Description */}
-  <div className="md:w-1/2 mt-10">
-
-    <p className="text-lg font-semibold text-gray-600 mb-2">Product Images</p>
-    <div className="h-[400px]">
-      <Image
-        src={product.images[0]}
-        alt={product.name}
-        width={600}
-        height={400}
-        loading="eager"
-        className="w-full h-auto max-h-[400px] object-contain"
-        priority
-        // unoptimized={!product.images[0].startsWith('http')}
-      />
-    </div>
-
-    <p className="text-[30px] font-semibold mt-6">About this item</p>
-    <p className="text-gray-700 mt-2">
-      Bali has the #1 Minimizer in the market (DF3385). Source: Circana, Retail Tracking Service,
-      U.S. Brand Sales, Women’s Non-Sports Bras, Brand Model, 12 Months Ending August 2024. <br />
-      <br />
-      SAY BYE-BYE TO UP TO 1.5 INCHES – Full-coverage bra with minimizer construction can pare your
-      profile by up to 1.5 inches. <br />
-      <br />
-      SHAPING & SUPPORT – The encased underwire and 2-ply supportive fabric provide the shaping and
-      support you want in a full-coverage bra. <br />
-      <br />
-      SMOOTH, SILKY, AND SEAMFREE – Underwire bra with lightly lined 2-ply cups that disappear under
-      tees and other clingy clothes. <br />
-      <br />
-      COMFORT STRAPS – No-slip straps help alleviate shoulder stress. <br />
-      <br />
-      ALL ABOUT THE DETAILS – This pretty minimizing bra has lace insets where cups meet the straps
-      and a 3-column, 2-row hook & eye closure.</p>
-  </div>
-
-  
+            <div className='flex justify-around'>
+            {product?.productImages?.map((image, index) => (
+              <Image key={index} src={image} alt={`Product image ${index + 1}`} width={50} height={50} />
+      ))}
+          </div>
 
 
+          <p className="text-[30px] font-semibold mt-6">About this item</p>
+          <p className="text-gray-700 mt-2">{product.description}</p>
+        </div>
 
-
-        {/* Product Info */}
+        {/* Right: Product Info */}
         <div className="md:w-1/2">
           <div className="mb-4">
             <span className="text-sm text-gray-500">{product.brand}</span>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">{product.name}</h1>
-            
+
             <div className="flex items-center mb-4">
-              {renderRating(product.rating)}
+              {/* {renderRating(product.rating)} */}
               <span className="ml-2 text-sm text-gray-600">
-                {product.rating.toFixed(1)} ({product.numReviews} reviews)
+                {/* {product.rating.toFixed(1)} ({product.numReviews} reviews) */}
               </span>
               <span className="mx-2 text-gray-300">|</span>
               <span className="text-sm text-gray-600">{product.sold} sold</span>
             </div>
 
             {product.stock > 0 ? (
-              <span className="text-sm text-green-600">In Stock ({product.stock} available)</span>
+              <span className="text-sm text-green-600">
+                In Stock ({product.stock} available)
+              </span>
             ) : (
               <span className="text-sm text-red-600">Out of Stock</span>
             )}
@@ -166,12 +164,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </div>
 
           <div className="mb-8">
-            <h2 className="text-lg font-semibold mb-2">Description</h2>
-            <p className="text-gray-700">{product.description}</p>
-          </div>
-
-          <div className="mb-8">
-            <h2 className="text-lg font-semibold mb-3">Specifications</h2>
+            <h2 className="text-lg font-semibold mb-2">Specifications</h2>
             <div className="space-y-2">
               {Object.entries(product.specifications).map(([key, value]) => (
                 <div key={key} className="flex">
@@ -184,26 +177,37 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             </div>
           </div>
 
-
-    <ProductsClient productId={product._id} />
-
+          <ProductsClient productId={product._id} />
+        </div>
       </div>
+
+      {/* Banner  */} 
+      <Image
+        src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/f6f098fa-cd46-425b-ae21-1a52b89abce0.__CR0,0,970,300_PT0_SX970_V1___.jpg"
+        alt="banner"
+        width={10000}
+        height={10000}
+        className="w-full h-auto object-contain mt-14"
+      />
+
+
+     {/* personl images  */}
+     <h1>Reviews with images</h1>
+<div className='flex overflow-x-auto space-x-4 py-4 scrollbar-hide'>
+  {product?.userImages?.map((ev, i) => (
+    <div key={i} className="flex-shrink-0"> 
+      <Image 
+        src={ev} 
+        width={600} 
+        height={600} 
+        alt={`User image ${i + 1}`}
+        className="min-w-[500px] h-auto object-contain rounded-lg shadow-lg"
+      />
+    </div>
+  ))}
 </div>
 
 
-
-
- {/* banner  */}
-<Image
-  src={"https://m.media-amazon.com/images/S/aplus-media-library-service-media/f6f098fa-cd46-425b-ae21-1a52b89abce0.__CR0,0,970,300_PT0_SX970_V1___.jpg"}
-  alt={"banner"}
-  width={10000}
-  height={10000}
-  className="w-full h-auto object-contain mt-14"
-/>
-
-
-   
     </main>
   );
 }

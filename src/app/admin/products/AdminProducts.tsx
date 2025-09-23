@@ -6,7 +6,6 @@ import Image from 'next/image';
 interface Product {
   _id: string;
   name: string;
-  slug: string;
   price: number;
   featured: boolean;
   isActive: boolean;

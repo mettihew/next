@@ -162,7 +162,7 @@ useEffect(() => {
               </svg>
             </button>
             <Link href="/" className="text-lg font-bold text-blue-600">
-              Eesy
+              Eesy 3
             </Link>
           </div>
 

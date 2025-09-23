@@ -1,3 +1,4 @@
+
 'use client';
 
 import Image from 'next/image';
@@ -7,22 +8,9 @@ import { useEffect, useState } from 'react';
 interface Product {
   _id: string;
   name: string;
-  slug: string;
   price: number;
-  images?: string[];
+  productImages?: string[];
 }
-
-// interface Product {
-//   _id: string;
-//   name: string;
-//   brand: string;
-//   price: number;
-//   images: {
-//     url: string;
-//     alt?: string;
-//   }[]; // Change from string[] to object array
-//   slug: string;
-// }
 
 interface ReviewStats {
   averageRating: number;
@@ -62,7 +50,7 @@ export default function ProductList({ products }: { products: Product[] }) {
   return (
     // phone is 2 line, tablet 3, pc 4
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-      {products.map((product: Product) => {
+      {products.map((product) => {
         const productStats = stats[product._id] || { averageRating: 0, reviewCount: 0 };
         const roundedRating = Math.round(productStats.averageRating);
 
@@ -74,7 +62,7 @@ export default function ProductList({ products }: { products: Product[] }) {
             <Link href={`/products/${product._id}`}>
               <div className="w-full h-[200px] relative">
                 <Image
-                  src={product.images?.[0] || '/placeholder.png'}
+                  src={product.productImages?.[0] || '/placeholder.png'}
                   alt={product.name || 'Product'}
                   fill
                   style={{ objectFit: 'contain' }}

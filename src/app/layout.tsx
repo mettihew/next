@@ -7,7 +7,7 @@ import GlobalRouterSpinner from '@/components/GlobalRouterSpinner';
 
 
 export const metadata = {
-  title: "Dev News App",
+  title: "eesy.ir",
   icons: {
     icon: "/favi.ico"
     // icon: "/favicon-react.ico"

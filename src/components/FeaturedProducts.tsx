@@ -27,7 +27,6 @@
 // type ProductType = {
 //   _id: string;
 //   name: string;
-//   slug: string;
 //   price: number;
 //   images: { url: string; alt?: string }[];
 // };
@@ -127,7 +126,6 @@ function Spinner() {
 type ProductType = {
   _id: string;
   name: string;
-  slug: string;
   price: number;
   images: { url: string; alt?: string }[];
 };

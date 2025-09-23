@@ -16,24 +16,441 @@
 
 // curl -X DELETE http://localhost:3000/api/test
 
-import { NextResponse } from 'next/server';
+// import { NextResponse } from 'next/server';
+
+// export async function GET() {
+//   return NextResponse.json({ message: 'Test route working 🎉' });
+// }
+
+
+import { NextResponse } from "next/server";
+import connectDB from "@/lib/dbConnect";
+import Product from "@/models/Product";
 
 export async function GET() {
-  return NextResponse.json({ message: 'Test route working 🎉' });
+  try {
+    await connectDB();
+    await Product.insertMany(
+      [
+  
+  
+  
+  {
+    "name": "Men's Midweight Signature Sleeve Logo Hooded Sweatshirt ",
+    "category": "clothesclothes",
+    "subCategory": "menmen",
+    "price": 159.99,
+    "discount": 25,
+    "stock": 150,
+    "sold": 2840,
+    "rating": 3.6,
+    "reviews": 850,
+    "bannerImage": "https://cdn.venngage.com/template/thumbnail/small/e73d816e-be85-4478-86f1-97f962744f2a.webp",
+    "brand": "Charlotte",
+    "description": "Crafted from premium 100% cotton, this classic crew neck t-shirt offers all-day comfort with a relaxed fit that moves with you. The pre-shrunk fabric maintains its shape wash after wash, while the reinforced shoulder seams ensure lasting durability. Perfect for layering or wearing solo.",
+   "features": [
+  "Pre-shrunk fabric prevents shrinking after wash",
+  "Reinforced shoulder seams for durability",
+  "Tagless design eliminates neck irritation",
+  "Moisture-wicking technology keeps you dry",
+  "Double-needle hem construction"
+],
+    "specifications": {
+    "Material": "100% cotton jersey",
+    "Fit": "Regular fit",
+    "Neckline": "Crew neck",
+    "SleeveLength": "Short sleeve",
+    "SizeRange": ["S", "M", "L", "XL", "XXL"],
+    "ColorOptions": ["black", "white", "navy", "gray", "olive"]
+  },
+    "productImages": [
+      "https://m.media-amazon.com/images/I/71OG5R-tfYL._AC_SY550_.jpg",
+      "https://m.media-amazon.com/images/I/81z35NuYe7L._AC_SX569_.jpg",
+      "https://m.media-amazon.com/images/I/51QJV3f00AL._AC_SX569_.jpg",
+      "https://m.media-amazon.com/images/I/61tVVFbrG5L._AC_SX569_.jpg",
+    ],
+    "userImages": [
+      "https://m.media-amazon.com/images/I/71B6D-C4usL.jpg",
+      "https://m.media-amazon.com/images/I/71-oSgsIYRL.jpg",
+      "https://m.media-amazon.com/images/I/71aGQtQ7qUL.jpg",
+      "https://m.media-amazon.com/images/I/B1i5ylmf3XS.jpg",
+      "https://m.media-amazon.com/images/I/71R+4jMPl9L.jpg",
+      "https://m.media-amazon.com/images/I/513Wk4QvfiL.jpg",
+    ]
+  },
+  
+  
+  {
+    "name": "VATPAVE Mens Striped Summer Shirt Casual Button Down Short Sleeve Beach Shirts Cotton Linen Shirts for Men ",
+    "category": "clothes",
+    "subCategory": "men",
+    "price": 229.99,
+    "discount": 15,
+    "stock": 250,
+    "sold": 1040,
+    "rating": 4.6,
+    "reviews": 1250,
+    "bannerImage": "https://cdn.venngage.com/template/thumbnail/small/e73d816e-be85-4478-86f1-97f962744f2a.webp",
+    "brand": "Charlotte",
+    "description": "Crafted from premium 100% cotton, this classic crew neck t-shirt offers all-day comfort with a relaxed fit that moves with you. The pre-shrunk fabric maintains its shape wash after wash, while the reinforced shoulder seams ensure lasting durability. Perfect for layering or wearing solo.",
+   "features": [
+  "Pre-shrunk fabric prevents shrinking after wash",
+  "Reinforced shoulder seams for durability",
+  "Tagless design eliminates neck irritation",
+  "Moisture-wicking technology keeps you dry",
+  "Double-needle hem construction"
+],
+    "specifications": {
+    "Material": "100% cotton jersey",
+    "Fit": "Regular fit",
+    "Neckline": "Crew neck",
+    "SleeveLength": "Short sleeve",
+    "SizeRange": ["S", "M", "L", "XL", "XXL"],
+    "ColorOptions": ["black", "white", "navy", "gray", "olive"]
+  },
+    "productImages": [
+      "https://m.media-amazon.com/images/I/71NR6SBkxZL._AC_SX569_.jpg",
+      "https://m.media-amazon.com/images/I/51QJV3f00AL._AC_SX569_.jpg",
+      "https://m.media-amazon.com/images/I/71OG5R-tfYL._AC_SY550_.jpg",
+      "https://m.media-amazon.com/images/I/81z35NuYe7L._AC_SX569_.jpg",
+    ],
+    "userImages": [
+      "https://m.media-amazon.com/images/I/71B6D-C4usL.jpg",
+      "https://m.media-amazon.com/images/I/71-oSgsIYRL.jpg",
+      "https://m.media-amazon.com/images/I/71aGQtQ7qUL.jpg",
+      "https://m.media-amazon.com/images/I/B1i5ylmf3XS.jpg",
+      "https://m.media-amazon.com/images/I/71R+4jMPl9L.jpg",
+      "https://m.media-amazon.com/images/I/513Wk4QvfiL.jpg",
+    ]
+  },
+  
+  
+  {
+    "name": "Under Armour UA Tech™ 2.0 ",
+    "category": "clothes",
+    "subCategory": "men",
+    "price": 389.99,
+    "discount": 15,
+    "stock": 150,
+    "sold": 140,
+    "rating": 2.6,
+    "reviews": 1250,
+    "bannerImage": "https://cdn.venngage.com/template/thumbnail/small/e73d816e-be85-4478-86f1-97f962744f2a.webp",
+    "brand": "Charlotte",
+    "description": "Crafted from premium 100% cotton, this classic crew neck t-shirt offers all-day comfort with a relaxed fit that moves with you. The pre-shrunk fabric maintains its shape wash after wash, while the reinforced shoulder seams ensure lasting durability. Perfect for layering or wearing solo.",
+   "features": [
+  "Pre-shrunk fabric prevents shrinking after wash",
+  "Reinforced shoulder seams for durability",
+  "Tagless design eliminates neck irritation",
+  "Moisture-wicking technology keeps you dry",
+  "Double-needle hem construction"
+],
+    "specifications": {
+    "Material": "100% cotton jersey",
+    "Fit": "Regular fit",
+    "Neckline": "Crew neck",
+    "SleeveLength": "Short sleeve",
+    "SizeRange": ["S", "M", "L", "XL", "XXL"],
+    "ColorOptions": ["black", "white", "navy", "gray", "olive"]
+  },
+    "productImages": [
+      "https://m.media-amazon.com/images/I/51RMsg82l9L._AC_SX679_.jpg",
+      "https://m.media-amazon.com/images/I/61tVVFbrG5L._AC_SX569_.jpg",
+      "https://m.media-amazon.com/images/I/81z35NuYe7L._AC_SX569_.jpg",
+      "https://m.media-amazon.com/images/I/519kKlEy0pL._AC_SX569_.jpg",
+    ],
+    "userImages": [
+      "https://m.media-amazon.com/images/I/71B6D-C4usL.jpg",
+      "https://m.media-amazon.com/images/I/71-oSgsIYRL.jpg",
+      "https://m.media-amazon.com/images/I/71aGQtQ7qUL.jpg",
+      "https://m.media-amazon.com/images/I/B1i5ylmf3XS.jpg",
+      "https://m.media-amazon.com/images/I/71R+4jMPl9L.jpg",
+      "https://m.media-amazon.com/images/I/513Wk4QvfiL.jpg",
+    ]
+  },
+  
+  
+  {
+    "name": "Under Armour Men's Project Rock Brahma Bull Long Sleeve ",
+    "category": "clothes",
+    "subCategory": "men",
+    "price": 429.99,
+    "discount": 15,
+    "stock": 250,
+    "sold": 3840,
+    "rating": 3.6,
+    "reviews": 1250,
+    "bannerImage": "https://cdn.venngage.com/template/thumbnail/small/e73d816e-be85-4478-86f1-97f962744f2a.webp",
+    "brand": "Chanel",
+    "description": "Crafted from premium 100% cotton, this classic crew neck t-shirt offers all-day comfort with a relaxed fit that moves with you. The pre-shrunk fabric maintains its shape wash after wash, while the reinforced shoulder seams ensure lasting durability. Perfect for layering or wearing solo.",
+   "features": [
+  "Pre-shrunk fabric prevents shrinking after wash",
+  "Reinforced shoulder seams for durability",
+  "Tagless design eliminates neck irritation",
+  "Moisture-wicking technology keeps you dry",
+  "Double-needle hem construction"
+],
+    "specifications": {
+    "Material": "100% cotton jersey",
+    "Fit": "Regular fit",
+    "Neckline": "Crew neck",
+    "SleeveLength": "Short sleeve",
+    "SizeRange": ["S", "M", "L", "XL", "XXL"],
+    "ColorOptions": ["black", "white", "navy", "gray", "olive"]
+  },
+    "productImages": [
+      "https://m.media-amazon.com/images/I/51lKlr5JmLL._AC_SX569_.jpg",
+      "https://m.media-amazon.com/images/I/41HY9DzFD9L._AC_SX569_.jpg",
+      "https://m.media-amazon.com/images/I/615rJMAirDL._AC_SX569_.jpg",
+      "https://m.media-amazon.com/images/I/51QJV3f00AL._AC_SX569_.jpg",
+    ],
+    "userImages": [
+      "https://m.media-amazon.com/images/I/71B6D-C4usL.jpg",
+      "https://m.media-amazon.com/images/I/71-oSgsIYRL.jpg",
+      "https://m.media-amazon.com/images/I/71aGQtQ7qUL.jpg",
+      "https://m.media-amazon.com/images/I/B1i5ylmf3XS.jpg",
+      "https://m.media-amazon.com/images/I/71R+4jMPl9L.jpg",
+      "https://m.media-amazon.com/images/I/513Wk4QvfiL.jpg",
+    ]
+  },
+  
+  
+  {
+    "name": "Champion, Midweight, Soft and Comfortable T-shirt Hoodie for Men",
+    "category": "clothes",
+    "subCategory": "men",
+    "price": 629.99,
+    "discount": 25,
+    "stock": 1250,
+    "sold": 340,
+    "rating": 5,
+    "reviews": 150,
+    "bannerImage": "https://cdn.venngage.com/template/thumbnail/small/e73d816e-be85-4478-86f1-97f962744f2a.webp",
+    "brand": "Chanel",
+    "description": "Crafted from premium 100% cotton, this classic crew neck t-shirt offers all-day comfort with a relaxed fit that moves with you. The pre-shrunk fabric maintains its shape wash after wash, while the reinforced shoulder seams ensure lasting durability. Perfect for layering or wearing solo.",
+   "features": [
+  "Pre-shrunk fabric prevents shrinking after wash",
+  "Reinforced shoulder seams for durability",
+  "Tagless design eliminates neck irritation",
+  "Moisture-wicking technology keeps you dry",
+  "Double-needle hem construction"
+],
+    "specifications": {
+    "Material": "100% cotton jersey",
+    "Fit": "Regular fit",
+    "Neckline": "Crew neck",
+    "SleeveLength": "Short sleeve",
+    "SizeRange": ["S", "M", "L", "XL", "XXL"],
+    "ColorOptions": ["black", "white", "navy", "gray", "olive"]
+  },
+    "productImages": [
+      "https://m.media-amazon.com/images/I/719yAm2v9UL._AC_SX679_.jpg",
+      "https://m.media-amazon.com/images/I/715ddfKn9hL._AC_SX569_.jpg",
+      "https://m.media-amazon.com/images/I/41HY9DzFD9L._AC_SX569_.jpg",
+      "https://m.media-amazon.com/images/I/615rJMAirDL._AC_SX569_.jpg",
+    ],
+    "userImages": [
+      "https://m.media-amazon.com/images/I/71B6D-C4usL.jpg",
+      "https://m.media-amazon.com/images/I/71-oSgsIYRL.jpg",
+      "https://m.media-amazon.com/images/I/71aGQtQ7qUL.jpg",
+      "https://m.media-amazon.com/images/I/B1i5ylmf3XS.jpg",
+      "https://m.media-amazon.com/images/I/71R+4jMPl9L.jpg",
+      "https://m.media-amazon.com/images/I/513Wk4QvfiL.jpg",
+    ]
+  },
+  
+  
+  {
+    "name": "Under Armour Men's Sportstyle Left Chest Cut-Off T-Shirt ",
+    "category": "clothes",
+    "subCategory": "men",
+    "price": 729.99,
+    "discount": 15,
+    "stock": 750,
+    "sold": 2040,
+    "rating": 2.6,
+    "reviews": 150,
+    "bannerImage": "https://cdn.venngage.com/template/thumbnail/small/e73d816e-be85-4478-86f1-97f962744f2a.webp",
+    "brand": "Chanel",
+    "description": "Crafted from premium 100% cotton, this classic crew neck t-shirt offers all-day comfort with a relaxed fit that moves with you. The pre-shrunk fabric maintains its shape wash after wash, while the reinforced shoulder seams ensure lasting durability. Perfect for layering or wearing solo.",
+   "features": [
+  "Pre-shrunk fabric prevents shrinking after wash",
+  "Reinforced shoulder seams for durability",
+  "Tagless design eliminates neck irritation",
+  "Moisture-wicking technology keeps you dry",
+  "Double-needle hem construction"
+],
+    "specifications": {
+    "Material": "100% cotton jersey",
+    "Fit": "Regular fit",
+    "Neckline": "Crew neck",
+    "SleeveLength": "Short sleeve",
+    "SizeRange": ["S", "M", "L", "XL", "XXL"],
+    "ColorOptions": ["black", "white", "navy", "gray", "olive"]
+  },
+    "productImages": [
+      "https://m.media-amazon.com/images/I/51qzWNVAPJL._AC_SX569_.jpg",
+      "https://m.media-amazon.com/images/I/715ddfKn9hL._AC_SX569_.jpg",
+      "https://m.media-amazon.com/images/I/61Z9CGaAHCL._AC_SY550_.jpg",
+      "https://m.media-amazon.com/images/I/41HY9DzFD9L._AC_SX569_.jpg",
+    ],
+    "userImages": [
+      "https://m.media-amazon.com/images/I/71B6D-C4usL.jpg",
+      "https://m.media-amazon.com/images/I/71-oSgsIYRL.jpg",
+      "https://m.media-amazon.com/images/I/71aGQtQ7qUL.jpg",
+      "https://m.media-amazon.com/images/I/B1i5ylmf3XS.jpg",
+      "https://m.media-amazon.com/images/I/71R+4jMPl9L.jpg",
+      "https://m.media-amazon.com/images/I/513Wk4QvfiL.jpg",
+    ]
+  },
+  
+  
+  {
+    "name": "Gildan Adult Ultra Cotton Long Sleeve T-Shirt, Style G2400, Multipack ",
+    "category": "clothes",
+    "subCategory": "men",
+    "price": 129.99,
+    "discount": 15,
+    "stock": 250,
+    "sold": 1840,
+    "rating": 4.6,
+    "reviews": 1250,
+    "bannerImage": "https://cdn.venngage.com/template/thumbnail/small/e73d816e-be85-4478-86f1-97f962744f2a.webp",
+    "brand": "Dior",
+    "description": "Crafted from premium 100% cotton, this classic crew neck t-shirt offers all-day comfort with a relaxed fit that moves with you. The pre-shrunk fabric maintains its shape wash after wash, while the reinforced shoulder seams ensure lasting durability. Perfect for layering or wearing solo.",
+   "features": [
+  "Pre-shrunk fabric prevents shrinking after wash",
+  "Reinforced shoulder seams for durability",
+  "Tagless design eliminates neck irritation",
+  "Moisture-wicking technology keeps you dry",
+  "Double-needle hem construction"
+],
+    "specifications": {
+    "Material": "100% cotton jersey",
+    "Fit": "Regular fit",
+    "Neckline": "Crew neck",
+    "SleeveLength": "Short sleeve",
+    "SizeRange": ["S", "M", "L", "XL", "XXL"],
+    "ColorOptions": ["black", "white", "navy", "gray", "olive"]
+  },
+    "productImages": [
+      "https://m.media-amazon.com/images/I/71iJKo5rYbL._AC_SX569_.jpg",
+      "https://m.media-amazon.com/images/I/715ddfKn9hL._AC_SX569_.jpg",
+      "https://m.media-amazon.com/images/I/41HY9DzFD9L._AC_SX569_.jpg",
+      "https://m.media-amazon.com/images/I/61Z9CGaAHCL._AC_SY550_.jpg",
+    ],
+    "userImages": [
+      "https://m.media-amazon.com/images/I/71B6D-C4usL.jpg",
+      "https://m.media-amazon.com/images/I/71-oSgsIYRL.jpg",
+      "https://m.media-amazon.com/images/I/71aGQtQ7qUL.jpg",
+      "https://m.media-amazon.com/images/I/B1i5ylmf3XS.jpg",
+      "https://m.media-amazon.com/images/I/71R+4jMPl9L.jpg",
+      "https://m.media-amazon.com/images/I/513Wk4QvfiL.jpg",
+    ]
+  },
+  
+  
+  {
+    "name": "Carhartt Men's Rain Defender Loose Fit Heavyweight Quarter-Zip Sweatshirt ",
+    "category": "clothes",
+    "subCategory": "men",
+    "price": 929.99,
+    "discount": 15,
+    "stock": 850,
+    "sold": 1140,
+    "rating": 3.8,
+    "reviews": 150,
+    "bannerImage": "https://cdn.venngage.com/template/thumbnail/small/e73d816e-be85-4478-86f1-97f962744f2a.webp",
+    "brand": "Dior",
+    "description": "Crafted from premium 100% cotton, this classic crew neck t-shirt offers all-day comfort with a relaxed fit that moves with you. The pre-shrunk fabric maintains its shape wash after wash, while the reinforced shoulder seams ensure lasting durability. Perfect for layering or wearing solo.",
+   "features": [
+  "Pre-shrunk fabric prevents shrinking after wash",
+  "Reinforced shoulder seams for durability",
+  "Tagless design eliminates neck irritation",
+  "Moisture-wicking technology keeps you dry",
+  "Double-needle hem construction"
+],
+    "specifications": {
+    "Material": "100% cotton jersey",
+    "Fit": "Regular fit",
+    "Neckline": "Crew neck",
+    "SleeveLength": "Short sleeve",
+    "SizeRange": ["S", "M", "L", "XL", "XXL"],
+    "ColorOptions": ["black", "white", "navy", "gray", "olive"]
+  },
+    "productImages": [
+      "https://m.media-amazon.com/images/I/81TyABX9EvL._AC_SX569_.jpg",
+      "https://m.media-amazon.com/images/I/71iJKo5rYbL._AC_SX569_.jpg",
+      "https://m.media-amazon.com/images/I/61Z9CGaAHCL._AC_SY550_.jpg",
+      "https://m.media-amazon.com/images/I/71PSIwLUGLL._AC_SX569_.jpg",
+    ],
+    "userImages": [
+      "https://m.media-amazon.com/images/I/71B6D-C4usL.jpg",
+      "https://m.media-amazon.com/images/I/71-oSgsIYRL.jpg",
+      "https://m.media-amazon.com/images/I/71aGQtQ7qUL.jpg",
+      "https://m.media-amazon.com/images/I/B1i5ylmf3XS.jpg",
+      "https://m.media-amazon.com/images/I/71R+4jMPl9L.jpg",
+      "https://m.media-amazon.com/images/I/513Wk4QvfiL.jpg",
+    ]
+  },
+  
+  
+  {
+    "name": "PJ PAUL JONES Mens Polo Shirts Regular Fit Textured V-Neck Knit Golf Polos ",
+    "category": "clothes",
+    "subCategory": "men",
+    "price": 829.99,
+    "discount": 15,
+    "stock": 250,
+    "sold": 3840, 
+    "rating": 4.1,
+    "reviews": 150,
+    "bannerImage": "https://cdn.venngage.com/template/thumbnail/small/e73d816e-be85-4478-86f1-97f962744f2a.webp",
+    "brand": "Dior",
+    "description": "Crafted from premium 100% cotton, this classic crew neck t-shirt offers all-day comfort with a relaxed fit that moves with you. The pre-shrunk fabric maintains its shape wash after wash, while the reinforced shoulder seams ensure lasting durability. Perfect for layering or wearing solo.",
+   "features": [
+  "Pre-shrunk fabric prevents shrinking after wash",
+  "Reinforced shoulder seams for durability",
+  "Tagless design eliminates neck irritation",
+  "Moisture-wicking technology keeps you dry",
+  "Double-needle hem construction"
+],
+    "specifications": {
+    "Material": "100% cotton jersey",
+    "Fit": "Regular fit",
+    "Neckline": "Crew neck",
+    "SleeveLength": "Short sleeve",
+    "SizeRange": ["S", "M", "L", "XL", "XXL"],
+    "ColorOptions": ["black", "white", "navy", "gray", "olive"]
+  },
+    "productImages": [
+      "https://m.media-amazon.com/images/I/811EQS-BRAL._AC_SX569_.jpg",
+      "https://m.media-amazon.com/images/I/71PSIwLUGLL._AC_SX569_.jpg",
+      "https://m.media-amazon.com/images/I/81zWCFS8AsL._AC_SX569_.jpg",
+      "https://m.media-amazon.com/images/I/71iJKo5rYbL._AC_SX569_.jpg",
+    ],
+    "userImages": [
+      "https://m.media-amazon.com/images/I/71B6D-C4usL.jpg",
+      "https://m.media-amazon.com/images/I/71-oSgsIYRL.jpg",
+      "https://m.media-amazon.com/images/I/71aGQtQ7qUL.jpg",
+      "https://m.media-amazon.com/images/I/B1i5ylmf3XS.jpg",
+      "https://m.media-amazon.com/images/I/71R+4jMPl9L.jpg",
+      "https://m.media-amazon.com/images/I/513Wk4QvfiL.jpg",
+    ]
+  },
+]
+    )
+
+    return NextResponse.json("it might work or not; check you site bitch");
+  } catch (err) {
+    return NextResponse.json({ error: err }, { status: 500 });
+  }
 }
 
 
-// import { NextResponse } from "next/server";
-// import connectDB from "@/lib/dbConnect";
-// import Product from "@/models/Product";
 
-// export async function GET() {
-//   try {
-//     await connectDB();
-//     await Product.insertMany()
 
-//     return NextResponse.json("it might work or not; check you site bitch");
-//   } catch (err) {
-//     return NextResponse.json({ error: err }, { status: 500 });
-//   }
-// }
+
+
+
+

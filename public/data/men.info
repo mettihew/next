@@ -36,7 +36,7 @@
       "https://m.media-amazon.com/images/I/51QJV3f00AL._AC_SX569_.jpg",
       "https://m.media-amazon.com/images/I/61tVVFbrG5L._AC_SX569_.jpg",
     ],
-    "userImages: [
+    "userImages": [
       "https://m.media-amazon.com/images/I/71B6D-C4usL.jpg",
       "https://m.media-amazon.com/images/I/71-oSgsIYRL.jpg",
       "https://m.media-amazon.com/images/I/71aGQtQ7qUL.jpg",
@@ -81,7 +81,7 @@
       "https://m.media-amazon.com/images/I/71OG5R-tfYL._AC_SY550_.jpg",
       "https://m.media-amazon.com/images/I/81z35NuYe7L._AC_SX569_.jpg",
     ],
-    "userImages: [
+    "userImages": [
       "https://m.media-amazon.com/images/I/71B6D-C4usL.jpg",
       "https://m.media-amazon.com/images/I/71-oSgsIYRL.jpg",
       "https://m.media-amazon.com/images/I/71aGQtQ7qUL.jpg",
@@ -126,7 +126,7 @@
       "https://m.media-amazon.com/images/I/81z35NuYe7L._AC_SX569_.jpg",
       "https://m.media-amazon.com/images/I/519kKlEy0pL._AC_SX569_.jpg",
     ],
-    "userImages: [
+    "userImages": [
       "https://m.media-amazon.com/images/I/71B6D-C4usL.jpg",
       "https://m.media-amazon.com/images/I/71-oSgsIYRL.jpg",
       "https://m.media-amazon.com/images/I/71aGQtQ7qUL.jpg",
@@ -171,7 +171,7 @@
       "https://m.media-amazon.com/images/I/615rJMAirDL._AC_SX569_.jpg",
       "https://m.media-amazon.com/images/I/51QJV3f00AL._AC_SX569_.jpg",
     ],
-    "userImages: [
+    "userImages": [
       "https://m.media-amazon.com/images/I/71B6D-C4usL.jpg",
       "https://m.media-amazon.com/images/I/71-oSgsIYRL.jpg",
       "https://m.media-amazon.com/images/I/71aGQtQ7qUL.jpg",
@@ -216,7 +216,7 @@
       "https://m.media-amazon.com/images/I/41HY9DzFD9L._AC_SX569_.jpg",
       "https://m.media-amazon.com/images/I/615rJMAirDL._AC_SX569_.jpg",
     ],
-    "userImages: [
+    "userImages": [
       "https://m.media-amazon.com/images/I/71B6D-C4usL.jpg",
       "https://m.media-amazon.com/images/I/71-oSgsIYRL.jpg",
       "https://m.media-amazon.com/images/I/71aGQtQ7qUL.jpg",
@@ -261,7 +261,7 @@
       "https://m.media-amazon.com/images/I/61Z9CGaAHCL._AC_SY550_.jpg",
       "https://m.media-amazon.com/images/I/41HY9DzFD9L._AC_SX569_.jpg",
     ],
-    "userImages: [
+    "userImages": [
       "https://m.media-amazon.com/images/I/71B6D-C4usL.jpg",
       "https://m.media-amazon.com/images/I/71-oSgsIYRL.jpg",
       "https://m.media-amazon.com/images/I/71aGQtQ7qUL.jpg",
@@ -306,7 +306,7 @@
       "https://m.media-amazon.com/images/I/41HY9DzFD9L._AC_SX569_.jpg",
       "https://m.media-amazon.com/images/I/61Z9CGaAHCL._AC_SY550_.jpg",
     ],
-    "userImages: [
+    "userImages": [
       "https://m.media-amazon.com/images/I/71B6D-C4usL.jpg",
       "https://m.media-amazon.com/images/I/71-oSgsIYRL.jpg",
       "https://m.media-amazon.com/images/I/71aGQtQ7qUL.jpg",
@@ -351,7 +351,7 @@
       "https://m.media-amazon.com/images/I/61Z9CGaAHCL._AC_SY550_.jpg",
       "https://m.media-amazon.com/images/I/71PSIwLUGLL._AC_SX569_.jpg",
     ],
-    "userImages: [
+    "userImages": [
       "https://m.media-amazon.com/images/I/71B6D-C4usL.jpg",
       "https://m.media-amazon.com/images/I/71-oSgsIYRL.jpg",
       "https://m.media-amazon.com/images/I/71aGQtQ7qUL.jpg",
@@ -369,7 +369,7 @@
     "price": 829.99,
     "discount": 15,
     "stock": 250,
-    "sold": 3840,
+    "sold": 3840, 
     "rating": 4.1,
     "reviews": 150,
     "bannerImage": "https://cdn.venngage.com/template/thumbnail/small/e73d816e-be85-4478-86f1-97f962744f2a.webp",
@@ -396,7 +396,7 @@
       "https://m.media-amazon.com/images/I/81zWCFS8AsL._AC_SX569_.jpg",
       "https://m.media-amazon.com/images/I/71iJKo5rYbL._AC_SX569_.jpg",
     ],
-    "userImages: [
+    "userImages": [
       "https://m.media-amazon.com/images/I/71B6D-C4usL.jpg",
       "https://m.media-amazon.com/images/I/71-oSgsIYRL.jpg",
       "https://m.media-amazon.com/images/I/71aGQtQ7qUL.jpg",
