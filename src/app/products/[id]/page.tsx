@@ -163,7 +163,7 @@ export default async function ProductPage({
           <div className="mb-8">
             <h2 className="text-lg font-semibold mb-2">Specifications</h2>
             <div className="space-y-2">
-              {Object.entries(product.specifications).map(([key, value]) => (
+              {product.specifications && Object.entries(product.specifications).map(([key, value]) => (
                 <div key={key} className="flex">
                   <span className="w-1/3 text-gray-600">{key}:</span>
                   <span className="w-2/3 text-gray-800">
