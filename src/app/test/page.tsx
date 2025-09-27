@@ -1,23 +1,4 @@
-import DelaySpinner from "@/components/RouterSpinnerLink";
-
+import FeaturedProducts from "@/components/FeaturedProducts";
 export default function Test(){
-
-return(
-<div>
-  <DelaySpinner href="/sth">
-<button>
-
-
-hello  world
-
-</button>
-
-
-  </DelaySpinner>
-
-
-</div>
-
-
-    )
+return(<FeaturedProducts />)
 }

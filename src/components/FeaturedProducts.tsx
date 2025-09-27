@@ -1,6 +1,3 @@
-
-
-
 "use client";
 import Link from "next/link";
 import Image from "next/image";
@@ -31,6 +28,8 @@ type ProductType = {
   productImages: string[];
 };
 
+// Removed unused getBaseUrl function since we're using relative URLs
+
 export default function FeaturedProducts() {
   const [products, setProducts] = useState<ProductType[]>([]);
   const [loading, setLoading] = useState(true);
@@ -40,10 +39,12 @@ export default function FeaturedProducts() {
     async function load() {
       try {
         setError(null);
-        const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
-        const apiUrl = `${baseUrl}/api/products/featured`;
+        
+        // Use relative URL for client-side requests
+        const apiUrl = '/api/products/featured';
         
         console.log('🔍 Fetching from:', apiUrl);
+        console.log('🌐 Current origin:', typeof window !== 'undefined' ? window.location.origin : 'server');
         
         const res = await fetch(apiUrl, {
           method: 'GET',

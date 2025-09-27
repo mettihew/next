@@ -33,20 +33,16 @@ export default function AboutPage() {
   return (
     <main className="max-w-5xl mx-auto py-10 px-4">
 
-
-
-
-      <section className='bg-yellow-400 '>
+      <section>
         <h2 className="text-2xl font-semibold">📇 Contact</h2>
         <div className="space-y-2">
 
           <div className='flex items-center gap-4'>
-            <Image src={'/fav.ico'} alt="Me" width={60} height={60} className="rounded-full" />
+            <Image src={'/images/Mettihew.jpg'} alt="Me" width={60} height={60} className="rounded-full" />
             <p className="text-[18px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px]">
               Mahdi Keramati</p>
+           
           </div>
-
-
 
 
 
@@ -92,8 +88,9 @@ export default function AboutPage() {
 
 
       <section className="mb-12">
-        <p>Next.js</p>
-        <p>TypeScript</p>
+           <p>mettihew@gmail.com</p>
+            <p>+989210015021</p>
+        <p>Next.js, TypeScript, React.js, Zustand </p>
       </section>
 
 
