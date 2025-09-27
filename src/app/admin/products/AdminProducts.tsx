@@ -102,11 +102,12 @@ export default function AdminProducts() {
             >
               {/* Product Image */}
               <div className="h-48 bg-gray-100 flex items-center justify-center relative">
-                {product.productImages && product.productImages[0] ? (
+                {product?.productImages && product.productImages[0] ? (
                   <Image
                     src={product.productImages[0]} 
                     alt={product.name}
-                    className="w-full h-full object-cover"
+                    width={100}
+                    height={100}
                   />
                 ) : (
                   <div className="text-gray-400 text-center">

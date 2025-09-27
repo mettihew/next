@@ -47,6 +47,7 @@ export default function ProductList({ products }: { products: Product[] }) {
     fetchStats();
   }, [products]);
 
+
   return (
     // phone is 2 line, tablet 3, pc 4
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">

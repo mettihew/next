@@ -7,7 +7,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Search, ShoppingCart, Heart, Bell, User, LogOut } from "lucide-react";
+import { Search, ShoppingCart, Heart, User, LogOut, User2 } from "lucide-react";
 import Link from "next/link";
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter, usePathname } from 'next/navigation';
@@ -106,9 +106,9 @@ useEffect(() => {
 }
 
   return (
-    <header className="bg-white shadow-sm top-0 z-50">
+    <header className="bg-gray-100 shadow-sm top-0 z-50">
       {/* Top Navigation */}
-      <div className="bg-gray-900 text-white text-sm">
+      <div className=" text-black text-sm">
         <div className="container mx-auto px-4 py-1 flex justify-between items-center">
           <div className="flex items-center space-x-2">
             <Link href="/products" className="hover:text-yellow-300">Products</Link>
@@ -162,7 +162,7 @@ useEffect(() => {
               </svg>
             </button>
             <Link href="/" className="text-lg font-bold text-blue-600">
-              Eesy 3
+              Eesyy
             </Link>
           </div>
 
@@ -258,19 +258,19 @@ useEffect(() => {
 
           {/* User Actions */}
           <div className="flex items-center space-x-4">
-            <Link href="/test" className="hidden md:flex items-center text-gray-700 hover:text-blue-600">
-              <Heart className="w-5 h-5 mr-1" />
-              <span className="text-sm">Test</span>
+
+            <Link href="/admin/products" className="hidden md:flex items-center text-gray-700 hover:text-blue-600">
+              <span className="text-sm">Admin</span>
             </Link>
-            <button className="hidden md:flex items-center text-gray-700 hover:text-blue-600">
-              <Bell className="w-5 h-5 mr-1" />
+            <Link href="/dashboard" className="hidden md:flex items-center text-gray-700 hover:text-blue-600">
+              <Heart className="w-5 h-5 mr-1" />
               <span className="text-sm">Notifications</span>
-            </button>
-            <button className="flex items-center text-gray-700 hover:text-blue-600">
+            </Link>
+              <Link href="/cart" className="hidden md:flex items-center text-gray-700 hover:text-blue-600">
               <ShoppingCart className="w-5 h-5 mr-1" />
               <span className="text-sm">Cart</span>
-              <span className="ml-1 bg-blue-600 text-white text-xs px-1.5 py-0.5 rounded-full">0</span>
-            </button>
+            </Link>
+          
 
             {!isLoading && (
               user ? (
@@ -279,6 +279,7 @@ useEffect(() => {
                 </Link>
               ) : (
                 <Link href="/login" className="flex items-center text-gray-700 hover:text-blue-600">
+                  <User2 className="w-5 h-5 mr-1" />
                   Login
                 </Link>
               )

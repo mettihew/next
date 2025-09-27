@@ -20,8 +20,9 @@ export default function RouterSpinnerLink({ href, children, className }: Props) 
   return (
     <>
       {loading && (
-        <div className="fixed top-0 left-0 w-full z-50 bg-black text-white text-center py-1 text-xs shadow">
-          Loading...
+        <div className="fixed top-0 left-0 w-full z-50 bg-green text-white text-center py-1 text-xs shadow">
+          {/* Loading... */}
+          shit
         </div>
       )}
       <div onClick={handleClick} className={className} role="button" tabIndex={0}>

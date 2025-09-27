@@ -17,7 +17,7 @@ type Product = {
   specifications: Record<string, string | string[]>;
   productImages: string[];
   userImages: string[];
-  // bannerImage: string;
+  bannerImage: string;
   rating: number;
   numReviews: number;
   stock: number;
@@ -63,30 +63,27 @@ export default async function ProductPage({
     return notFound();
   }
 
-  const discountedPrice = product.discount
-    ? product.price * (1 - product.discount / 100)
-    : null;
+  // const discountedPrice = product.discount
+  //   ? product.price * (1 - product.discount / 100)
+  //   : null;
 
-  const renderRating = (rating: number) => {
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 >= 0.5;
-    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+  // const renderRating = (rating: number) => {
+  //   const fullStars = Math.floor(rating);
+  //   const hasHalfStar = rating % 1 >= 0.5;
+  //   const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
 
-console.log('this is the product you see over here =' , product);
-
-
-    return (
-      <div className="flex">
-        {[...Array(fullStars)].map((_, i) => (
-          <span key={`full-${i}`} className="text-yellow-400">★</span>
-        ))}
-        {hasHalfStar && <span className="text-yellow-400">½</span>}
-        {[...Array(emptyStars)].map((_, i) => (
-          <span key={`empty-${i}`} className="text-gray-300">★</span>
-        ))}
-      </div>
-    );
-  };
+  //   return (
+  //     <div className="flex">
+  //       {[...Array(fullStars)].map((_, i) => (
+  //         <span key={`full-${i}`} className="text-yellow-400">★</span>
+  //       ))}
+  //       {hasHalfStar && <span className="text-yellow-400">½</span>}
+  //       {[...Array(emptyStars)].map((_, i) => (
+  //         <span key={`empty-${i}`} className="text-gray-300">★</span>
+  //       ))}
+  //     </div>
+  //   );
+  // };
 
   return (
     <main className="py-8 px-4 max-w-7xl mx-auto">
@@ -143,7 +140,7 @@ console.log('this is the product you see over here =' , product);
             )}
           </div>
 
-          <div className="mb-6">
+          {/* <div className="mb-6">
             {discountedPrice ? (
               <div className="flex items-center">
                 <span className="text-3xl font-bold text-gray-900 mr-3">
@@ -161,7 +158,7 @@ console.log('this is the product you see over here =' , product);
                 ${product.price.toFixed(2)}
               </span>
             )}
-          </div>
+          </div> */}
 
           <div className="mb-8">
             <h2 className="text-lg font-semibold mb-2">Specifications</h2>
@@ -183,11 +180,11 @@ console.log('this is the product you see over here =' , product);
 
       {/* Banner  */} 
       <Image
-        src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/f6f098fa-cd46-425b-ae21-1a52b89abce0.__CR0,0,970,300_PT0_SX970_V1___.jpg"
+      src={product?.bannerImage}
         alt="banner"
         width={10000}
         height={10000}
-        className="w-full h-auto object-contain mt-14"
+        className="w-full object-contain mt-14"
       />
 
 

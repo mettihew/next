@@ -140,17 +140,6 @@ export default async function HomePage() {
 
 
 
-  {/* banner of sunglesses extremly hot fashion lady  */}
-      <div className="flex items-center justify-between mt-6 md:hidden">
-        <h2 className="text-[18px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] font-bold ml-2 ">Fashion Products</h2>
-        <RouterSpinnerLink href="/products">
-          <Button variant="default">Explore All</Button>
-        </RouterSpinnerLink>
-      </div>
-
-      <div className="flex items-center justify-center">
-            <Image src={'/images/fashion/fashion-woman-banner2.jpg'} alt="fashion woman banner" width={1920} height={0} className="w-full h-auto max-w-100 md:hidden" />
-      </div>
 
 
 
@@ -247,6 +236,17 @@ export default async function HomePage() {
   ))}
 </div>
 
+  {/* banner of sunglesses extremly hot fashion lady  */}
+      <div className="flex items-center justify-between mt-6 md:hidden">
+        <h2 className="text-[18px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] font-bold ml-2 ">Fashion Products</h2>
+        <RouterSpinnerLink href="/products">
+          <Button variant="default">Explore All</Button>
+        </RouterSpinnerLink>
+      </div>
+
+      <div className="flex items-center justify-center">
+            <Image src={'/images/fashion/fashion-woman-banner2.jpg'} alt="fashion woman banner" width={1920} height={0} className="w-full h-auto max-w-100 md:hidden" />
+      </div>
 
 
 <FeaturedProducts />

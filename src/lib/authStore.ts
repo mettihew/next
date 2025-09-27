@@ -37,7 +37,7 @@ export const useAuthStore = create<AuthState>((set) => ({
   initializeAuth: async () => {
     set({ isLoading: true });
     try {
-      const response = await fetch('/api/auth/me');
+      const response = await fetch('/api/auth/jwt');
       if (response.ok) {
         const userData = await response.json();
         set({ user: userData, isLoading: false });

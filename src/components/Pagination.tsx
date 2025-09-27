@@ -22,8 +22,8 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
     }
     
     // Show pages around current page
-    const startPage = Math.max(1, Math.min(totalPages - 4, currentPage - 2));
-    const endPage = Math.min(totalPages, startPage + 4);
+    const startPage = Math.max(1, Math.min(totalPages - 2, currentPage - 1));
+    const endPage = Math.min(totalPages, startPage + 2);
     
     for (let i = startPage; i <= endPage; i++) {
       pages.push(
@@ -63,9 +63,13 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
   if (totalPages <= 1) return null;
 
   return (
-    <div className="mt-4 flex items-center gap-2">
+    <div className="mt-4 flex flex-wrap">
+
+    <div className="flex items-center gap-2">
+
+      
       {/* First page */}
-      <button 
+      {/* <button 
         disabled={currentPage === 1} 
         onClick={() => onPageChange(1)}
         className={`px-3 py-1 border rounded ${
@@ -73,7 +77,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
         }`}
       >
         First
-      </button>
+      </button> */}
 
       {/* Previous */}
       <button 
@@ -103,7 +107,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
       </button>
 
       {/* Last page */}
-      <button 
+      {/* <button 
         disabled={currentPage === totalPages} 
         onClick={() => onPageChange(totalPages)}
         className={`px-3 py-1 border rounded ${
@@ -111,12 +115,17 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
         }`}
       >
         Last
-      </button>
+      </button> */}
 
-      {/* Page info */}
-      <span className="ml-4 text-sm text-gray-600">
+   
+    </div>
+
+   {/* Page info */}
+      <span className="ml-4 mt-2 text-sm text-gray-600 min-w-[75px]">
         Page {currentPage} of {totalPages}
       </span>
+
     </div>
+
   );
 }
