@@ -17,6 +17,7 @@ type Product = {
 type ProductData = {
   products: Product[];
   totalPages: number;
+  total: number;
 };
 
 function ProductsContent() {
@@ -25,7 +26,7 @@ function ProductsContent() {
   const page = parseInt(searchParams.get('page') || '1');
   const limit = 4;
   
-  const [data, setData] = useState<ProductData>({ products: [], totalPages: 1 });
+  const [data, setData] = useState<ProductData>({ products: [], totalPages: 1, total: 0 });
   const [loading, setLoading] = useState(true); // Start with true for initial load
   const [error, setError] = useState<string | null>(null);
 
@@ -49,7 +50,7 @@ function ProductsContent() {
       } catch (err) {
         console.error('Error fetching products:', err);
         setError(err instanceof Error ? err.message : 'Failed to load products');
-        setData({ products: [], totalPages: 1 });
+        setData({ products: [], totalPages: 1, total: 0  });
       } finally {
         setLoading(false);
       }
@@ -63,6 +64,9 @@ function ProductsContent() {
     params.set('page', newPage.toString());
     router.push(`/products?${params.toString()}`);
   };
+
+  console.log(data);
+  
 
   if (error) {
     return (
@@ -87,7 +91,12 @@ function ProductsContent() {
   return (
     <main className="max-w-7xl mx-auto px-4 py-8">
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-3xl font-bold">All Products {data?.products?.length} Results</h1>
+
+        {!loading &&
+        <h1 className="text-3xl font-bold">All Products {data?.total} Results</h1>
+        }
+
+
         {loading && (
           <div className="text-sm text-gray-500 animate-pulse">
             Loading products...

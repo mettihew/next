@@ -12,6 +12,12 @@ interface ProductDocument {
   price: number;
   productImages?: string[];
   specifications: Record<string, string | string[]>;
+  userImages: string[];
+      bannerImage: string;
+      stock: number;
+      sold: number;
+      brand: string;
+      description: string;
 }
 
 interface ProductResponse {
@@ -20,6 +26,12 @@ interface ProductResponse {
   price: number;
   productImages: string[];
   specifications: Record<string, string | string[]>;
+    userImages: string[];
+      bannerImage: string;
+      stock: number;
+      sold: number;
+      brand: string;
+      description: string;
 }
 
 // Connect to MongoDB
@@ -52,7 +64,13 @@ export async function GET(
       name: product.name,
       price: product.price,
       productImages: product.productImages || [],
-      specifications: product.specifications
+      specifications: product.specifications,
+      userImages: product.userImages,
+      bannerImage: product.bannerImage,
+      stock: product.stock,
+      sold: product.sold,
+      brand: product.brand,
+      description: product.description,
     };
 
     return NextResponse.json(response);

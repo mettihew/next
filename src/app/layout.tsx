@@ -27,7 +27,7 @@ export default function RootLayout({
         <TopProgressBar />
         {/* smooth pagination */}
          <PageTransition>
-          {/* showing loading... on every button or a tag click GlobalRouterSpinner */}
+          {/* showing loading... on every button  */}
         <GlobalRouterSpinner />
     {children}
   </PageTransition>

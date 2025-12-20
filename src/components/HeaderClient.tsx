@@ -99,7 +99,7 @@ useEffect(() => {
     router.push(`/search?q=${encodeURIComponent(searchQuery)}&category=${encodeURIComponent(category)}`);
   } else if (category) {
     // Browse category without search query
-    router.push(`/category/${encodeURIComponent(category.toLowerCase())}`);
+    router.push(`/products/category/${encodeURIComponent(category.toLowerCase())}`);
   }
   
   (document.activeElement as HTMLElement)?.blur();
@@ -112,7 +112,7 @@ useEffect(() => {
         <div className="container mx-auto px-4 py-1 flex justify-between items-center">
           <div className="flex items-center space-x-2">
             <Link href="/products" className="hover:text-yellow-300">Products</Link>
-            <Link href="#" className="hover:text-yellow-300">Sell</Link>
+            {/* <Link href="#" className="hover:text-yellow-300">Sell</Link> */}
             <Link href="/about" className="hover:text-yellow-300">Help & Contact</Link>
           </div>
           <div className="flex items-center space-x-4">
@@ -163,6 +163,9 @@ useEffect(() => {
             </button>
             <Link href="/" className="text-lg font-bold text-blue-600">
               Eesy
+            </Link>
+            <Link href="/images" className=" text-red-600">
+              Images
             </Link>
           </div>
 

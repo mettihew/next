@@ -32,7 +32,7 @@ export default function ProductGrid({ title, products, href, showDetails = true 
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl md:text-2xl font-bold text-gray-900">{title}</h2>
         {href && (
-          <RouterSpinnerLink href={href}>
+          <RouterSpinnerLink href={"products"}>
             <Button variant="link" className="text-blue-600 hover:text-blue-800 text-sm md:text-base">
               See all
             </Button>

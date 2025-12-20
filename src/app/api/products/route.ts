@@ -7,7 +7,7 @@ export async function GET(req: Request) {
   
   const { searchParams } = new URL(req.url);
   const page = parseInt(searchParams.get('page') || '1');
-  const limit = 1
+  const limit = 5
 
   const skip = (page - 1) * limit;
 

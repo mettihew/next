@@ -131,7 +131,7 @@ export default async function HomePage() {
             <h1 className=" text-[14px] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px]">
               Score these trending kicks
             </h1>
-            <Link href="#" className="text-blue-500 underline text-[12px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px]">
+            <Link href="/products" className="text-blue-500 underline text-[12px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px]">
               See all
             </Link>
           </div>
